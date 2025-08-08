@@ -10,7 +10,7 @@ const ImpactSection = () => {
 
   return (
     <section className="py-16 px-4 bg-primary text-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h2 className="section-title text-white">Our Impact</h2>
           <div className="w-20 h-1 bg-white mx-auto"></div>
@@ -33,7 +33,7 @@ const ImpactSection = () => {
 
         <div className=" rounded-lg p-8 fade-in">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full">
               <h3 className="text-2xl font-semibold mb-4">
                 Transforming Lives by the Power of Love
               </h3>
@@ -54,9 +54,9 @@ const ImpactSection = () => {
                 mandatory for our beneficiaries.
               </p>
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full">
               <div
-                className="bg-secondary rounded-xl w-full h-64 flex items-center justify-center"
+                className="bg-secondary rounded-xl w-full h-64 flex items-center justify-center bg-cover bg-center"
                 style={{ backgroundImage: "url('/images/impact-1.jpg')" }}
               ></div>
             </div>

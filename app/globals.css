@@ -120,6 +120,57 @@ body {
   .btn-secondary {
     @apply py-3 px-6;
   }
+  
+  /* Improve mobile touch targets */
+  button, a, input, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Adjust padding for better mobile spacing */
+  .py-16 {
+    @apply py-12;
+  }
+  
+  /* Improve form elements on mobile */
+  .form-input {
+    @apply py-3;
+  }
+}
+
+/* Additional mobile-specific improvements */
+@media (max-width: 480px) {
+  .card {
+    @apply mx-2;
+  }
+  
+  .section-subtitle {
+    @apply text-sm;
+  }
+}
+
+/* Ensure proper scaling on all devices */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve text readability on mobile */
+body {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Fix for mobile browser address bar */
+html {
+  scroll-padding-top: 0;
+}
+
+/* Improve tap targets */
+a, button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Form styles */

@@ -32,8 +32,8 @@ const ProgramsSection = () => {
   ];
 
   return (
-    <section className="h-screen flex items-center justify-center py-16 px-4 bg-white mt-20 mb-20">
-      <div className="max-w-6xl mx-auto">
+    <section className="min-h-screen flex items-center justify-center py-16 px-4 bg-white">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h2 className="section-title">Our Programs</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
@@ -51,7 +51,7 @@ const ProgramsSection = () => {
               className="card hover:shadow-lg transition duration-300 fade-in"
             >
               <div
-                className="bg-secondary w-full h-48 flex items-center justify-center"
+                className="bg-secondary w-full h-48 md:h-64 flex items-center justify-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${program.image})` }}
               ></div>
               <div className="p-6">

@@ -18,8 +18,8 @@ const DonateSection = () => {
   ];
 
   return (
-    <section className="h-screen flex items-center justify-center py-16 px-4 bg-secondary">
-      <div className="max-w-6xl mx-auto">
+    <section className="min-h-screen flex items-center justify-center py-16 px-4 bg-secondary">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h2 className="section-title">Support Our Mission</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
@@ -30,7 +30,7 @@ const DonateSection = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="md:w-1/2 fade-in">
+          <div className="md:w-1/2 fade-in w-full">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
               Make a Difference Today
             </h3>
@@ -44,7 +44,7 @@ const DonateSection = () => {
               All donations are tax-deductible and go directly toward funding
               our programs and services.
             </p>
-            <div className="card p-10">
+            <div className="card p-6">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">
                 Ways to Give
               </h4>
@@ -121,7 +121,7 @@ const DonateSection = () => {
             </div>
           </div>
 
-          <div className="md:w-1/2 fade-in">
+          <div className="md:w-1/2 fade-in w-full">
             <div className="card p-5">
               <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
                 Donate Now

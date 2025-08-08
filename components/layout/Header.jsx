@@ -75,7 +75,7 @@ const Header = () => {
                     Admin
                   </Link>
                 )}
-                <button 
+                <button
                   onClick={handleSignOut}
                   className="text-gray-800 hover:text-primary font-medium transition duration-300"
                 >
@@ -96,9 +96,10 @@ const Header = () => {
           
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-gray-800 hover:text-primary focus:outline-none transition duration-300"
+              aria-label="Toggle menu"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMenuOpen ? (
@@ -113,27 +114,27 @@ const Header = () => {
         
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t">
+          <div className="md:hidden py-4 border-t max-h-[calc(100vh-100px)] overflow-y-auto">
             <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+              <Link href="/" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/about" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+              <Link href="/about" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
                 About
               </Link>
-              <Link href="/programs" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+              <Link href="/programs" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
                 Programs
               </Link>
-              <Link href="/impact" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+              <Link href="/impact" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
                 Impact
               </Link>
-              <Link href="/gallery" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+              <Link href="/gallery" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
                 Gallery
               </Link>
-              <Link href="/stories" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+              <Link href="/stories" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
                 Stories
               </Link>
-              <Link href="/donate" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+              <Link href="/donate" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
                 Donate
               </Link>
               
@@ -142,16 +143,19 @@ const Header = () => {
                   <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
                 ) : session ? (
                   <>
-                    <Link href="/dashboard" className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300">
+                    <Link href="/dashboard" className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300" onClick={() => setIsMenuOpen(false)}>
                       Dashboard
                     </Link>
                     {session.user.isAdmin && (
-                      <Link href="/admin" className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300">
+                      <Link href="/admin" className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300" onClick={() => setIsMenuOpen(false)}>
                         Admin
                       </Link>
                     )}
-                    <button 
-                      onClick={handleSignOut}
+                    <button
+                      onClick={() => {
+                        handleSignOut();
+                        setIsMenuOpen(false);
+                      }}
                       className="block text-gray-800 hover:text-primary font-medium transition duration-300"
                     >
                       Sign Out
@@ -159,10 +163,10 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <Link href="/login" className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300">
+                    <Link href="/login" className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300" onClick={() => setIsMenuOpen(false)}>
                       Login
                     </Link>
-                    <Link href="/register" className="inline-block btn-primary">
+                    <Link href="/register" className="inline-block btn-primary" onClick={() => setIsMenuOpen(false)}>
                       Register
                     </Link>
                   </>
