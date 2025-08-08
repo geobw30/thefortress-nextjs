@@ -4,12 +4,12 @@ const AboutPage = () => {
   return (
     <div className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12 fade-in">
+        <div className="text-center fade-in">
           <h1 className="section-title">About The Fortress</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
         </div>
         
-        <div className="flex flex-col md:flex-row items-center gap-8 mb-16 fade-in">
+        <div className="h-screen flex flex-col md:flex-row items-center gap-8 mb-16 fade-in">
           <div className="md:w-1/2">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
             <p className="text-gray-600 mb-6">
@@ -30,7 +30,7 @@ const AboutPage = () => {
           </div>
         </div>
         
-        <div className="mb-16 fade-in">
+        <div className="h-screen mb-16 fade-in">
           <h2 className="section-title text-center">Our Leadership</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {[1, 2, 3].map((item) => (
@@ -46,7 +46,7 @@ const AboutPage = () => {
           </div>
         </div>
         
-        <div className="bg-secondary rounded-lg p-8 fade-in">
+        <div className="h-screen bg-secondary rounded-lg p-8 fade-in">
           <h2 className="section-title text-center">Our History</h2>
           <div className="space-y-6 mt-8">
             <div className="border-l-4 border-primary pl-4 py-2">

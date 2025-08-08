@@ -1,0 +1,27 @@
+node_modules
+.next/
+.env*
+!.env.example
+</content>
+</file>
+</files>
+<environment_details>
+# VSCode Visible Files
+postcss.config.js
+
+# VSCode Open Tabs
+.env.local,lib/auth.js,jsconfig.json,next.config.js,package.json,tailwind.config.js,postcss.config.js,components/layout/SessionWrapper.jsx,app/layout.js
+
+# Current Time
+Current time in ISO 8601 UTC format: 2025-08-08T06:21:56.724Z
+User time zone: Africa/Nairobi, UTC+3:00
+
+# Current Cost
+$0.43
+
+# Current Mode
+<slug>debug</slug>
+<name>Debug</name>
+<model>qwen/qwen3-coder</model>
+You have not created a todo list yet. Create one with `update_todo_list` if your task is complicated or involves multiple steps.
+</environment_details>

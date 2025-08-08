@@ -9,17 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.4.12",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.0.0",
+    "mongoose": "^8.0.0",
+    "multer": "^1.4.5-lts.1",
+    "next": "^15.0.0",
+    "next-auth": "^4.24.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "next-auth": "^4.22.1",
-    "mongoose": "^7.4.1",
-    "bcryptjs": "^2.4.3",
-    "cloudinary": "^1.40.0",
-    "multer": "^1.4.5-lts.1"
+    "tailwindcss": "^3.4.0"
   },
   "devDependencies": {
-    "eslint": "8.46.0",
-    "eslint-config-next": "13.4.12"
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.0.0"
   }
 }

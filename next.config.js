@@ -1,10 +1,11 @@
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
-    domains: ['res.cloudinary.com'], // Add your image hosting service domains here
+    domains: ['res.cloudinary.com'],
   },
 }
 
-module.exports = nextConfig
+export default nextConfig

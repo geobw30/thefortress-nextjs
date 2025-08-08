@@ -21,7 +21,7 @@ const DonatePage = () => {
         
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2 fade-in">
-            <div className="card mb-8">
+            <div className="card mb-8 p-5">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">Why Your Support Matters</h2>
               <p className="text-gray-600 mb-6">
                 Every contribution, no matter the size, makes a meaningful impact in the lives of those we serve. 
@@ -40,7 +40,7 @@ const DonatePage = () => {
               </div>
             </div>
             
-            <div className="card">
+            <div className="card p-5">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">Other Ways to Give</h2>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -88,7 +88,7 @@ const DonatePage = () => {
           </div>
           
           <div className="md:w-1/2 fade-in">
-            <div className="card sticky top-8">
+            <div className="card sticky top-8 p-5">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Donate Now</h2>
               
               <div className="mb-8">
