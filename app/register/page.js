@@ -86,7 +86,7 @@ const RegisterPage = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="form-input"
+                  className="form-input w-full"
                 />
               </div>
             </div>
@@ -104,7 +104,7 @@ const RegisterPage = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="form-input"
+                  className="form-input w-full"
                 />
               </div>
             </div>
@@ -122,7 +122,7 @@ const RegisterPage = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="form-input"
+                  className="form-input w-full"
                 />
               </div>
             </div>
@@ -140,7 +140,7 @@ const RegisterPage = () => {
                   required
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="form-input"
+                  className="form-input w-full"
                 />
               </div>
             </div>

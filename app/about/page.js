@@ -3,34 +3,34 @@ import React from 'react'
 const AboutPage = () => {
   return (
     <div className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center fade-in">
           <h1 className="section-title">About The Fortress</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
         </div>
         
-        <div className="h-screen flex flex-col md:flex-row items-center gap-8 mb-16 fade-in">
-          <div className="md:w-1/2">
+        <div className="min-h-screen flex flex-col md:flex-row items-center gap-8 mb-16 fade-in">
+          <div className="md:w-1/2 w-full">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
             <p className="text-gray-600 mb-6">
-              The Fortress is dedicated to creating sustainable change in underserved communities 
-              through education, healthcare, and economic empowerment initiatives. We believe that 
+              The Fortress is dedicated to creating sustainable change in underserved communities
+              through education, healthcare, and economic empowerment initiatives. We believe that
               every individual deserves access to basic necessities and opportunities for growth.
             </p>
             <p className="text-gray-600 mb-6">
-              Founded in 2010, we have impacted over 50,000 lives across rural communities in East Africa, 
+              Founded in 2010, we have impacted over 50,000 lives across rural communities in East Africa,
               providing access to clean water, education, and healthcare services.
             </p>
           </div>
           
-          <div className="md:w-1/2">
-            <div className="bg-secondary border-2 border-dashed rounded-xl w-full h-96 flex items-center justify-center">
+          <div className="md:w-1/2 w-full">
+            <div className="bg-secondary border-2 border-dashed rounded-xl w-full h-64 md:h-96 flex items-center justify-center">
               <span className="text-gray-500">About Image</span>
             </div>
           </div>
         </div>
         
-        <div className="h-screen mb-16 fade-in">
+        <div className="min-h-screen mb-16 fade-in">
           <h2 className="section-title text-center">Our Leadership</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {[1, 2, 3].map((item) => (
@@ -46,7 +46,7 @@ const AboutPage = () => {
           </div>
         </div>
         
-        <div className="h-screen bg-secondary rounded-lg p-8 fade-in">
+        <div className="bg-secondary rounded-lg p-8 fade-in">
           <h2 className="section-title text-center">Our History</h2>
           <div className="space-y-6 mt-8">
             <div className="border-l-4 border-primary pl-4 py-2">

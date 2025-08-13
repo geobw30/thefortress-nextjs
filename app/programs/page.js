@@ -36,7 +36,7 @@ const ProgramsPage = () => {
 
   return (
     <div className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h1 className="section-title">Our Programs</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
@@ -46,14 +46,14 @@ const ProgramsPage = () => {
           </p>
         </div>
 
-        <div className="h-screen flex items-center justify-center grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-8">
           {programs.map((program, index) => (
             <div
               key={index}
               className="card hover:shadow-lg transition duration-300 fade-in"
             >
               <div
-                className="bg-secondary w-full h-48 flex items-center justify-center"
+                className="bg-secondary w-full h-48 md:h-64 flex items-center justify-center bg-cover bg-center"
                 style={{ backgroundImage: `url(${program.image})` }}
               ></div>
               <div className="p-6">
@@ -79,10 +79,10 @@ const ProgramsPage = () => {
           ))}
         </div>
 
-        <div className="h-screen flex items-center justify-center  mt-16 bg-secondary rounded-lg p-8 fade-in">
+        <div className="mt-16 bg-secondary rounded-lg p-8 fade-in">
           <h2 className="section-title text-center">Get Involved</h2>
           <div className="flex flex-col md:flex-row gap-8 mt-8 p-5">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Support Our Programs
               </h3>
@@ -93,7 +93,7 @@ const ProgramsPage = () => {
               </p>
               <button className="btn-primary">Donate Now</button>
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Volunteer With Us
               </h3>

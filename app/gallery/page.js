@@ -93,7 +93,7 @@ const GalleryPage = () => {
 
   return (
     <div className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h1 className="section-title">Our Gallery</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
@@ -130,7 +130,7 @@ const GalleryPage = () => {
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="form-input"
+                  className="form-input w-full"
                   required
                 />
               </div>
@@ -141,7 +141,7 @@ const GalleryPage = () => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows="3"
-                  className="form-input"
+                  className="form-input w-full"
                 ></textarea>
               </div>
               
@@ -151,12 +151,12 @@ const GalleryPage = () => {
                   type="file"
                   onChange={handleImageChange}
                   accept="image/*"
-                  className="form-input"
+                  className="form-input w-full"
                   required
                 />
               </div>
               
-              <div className="flex justify-end space-x-3">
+              <div className="flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
                 <button
                   type="button"
                   onClick={() => setShowUploadForm(false)}
@@ -186,9 +186,9 @@ const GalleryPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryImages.map((image) => (
             <div key={image._id} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
-              <img 
-                src={image.imageUrl} 
-                alt={image.title} 
+              <img
+                src={image.imageUrl}
+                alt={image.title}
                 className="w-full h-64 object-cover"
                 onError={(e) => {
                   e.target.onerror = null

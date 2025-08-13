@@ -31,7 +31,7 @@ const ImpactPage = () => {
 
   return (
     <div className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h1 className="section-title">Our Impact</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
@@ -83,7 +83,7 @@ const ImpactPage = () => {
         <div className="bg-secondary rounded-lg p-8 fade-in">
           <h2 className="section-title text-center">Annual Report</h2>
           <div className="flex flex-col md:flex-row items-center gap-8 mt-8">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full">
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                 2023 Impact Report
               </h3>
@@ -94,7 +94,7 @@ const ImpactPage = () => {
               </p>
               <button className="btn-primary">Download Report (PDF)</button>
             </div>
-            <div className="md:w-1/2">
+            <div className="md:w-1/2 w-full">
               <div className="bg-secondary border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center">
                 <span className="text-gray-500">Annual Report Cover</span>
               </div>

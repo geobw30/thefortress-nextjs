@@ -70,7 +70,7 @@ const LoginPage = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="form-input"
+                  className="form-input w-full"
                 />
               </div>
             </div>
@@ -88,7 +88,7 @@ const LoginPage = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="form-input"
+                  className="form-input w-full"
                 />
               </div>
             </div>

@@ -12,9 +12,9 @@ const ImpactSection = () => {
     <section className="py-16 px-4 bg-primary text-white">
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
-          <h2 className="section-title text-white">Our Impact</h2>
+          <h2 className="section-title" style={{color: "white"}}>Our Impact</h2>
           <div className="w-20 h-1 bg-white mx-auto"></div>
-          <p className="section-subtitle text-white">
+          <p className="section-subtitle" style={{color: "white"}}>
             Through our programs and partnerships, we've made a significant
             difference in communities across East Africa.
           </p>

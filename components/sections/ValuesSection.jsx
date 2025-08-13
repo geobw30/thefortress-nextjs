@@ -23,14 +23,16 @@ const ValuesSection = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-16 px-4 bg-secondary">
+    <section
+      className="min-h-screen flex items-center justify-center py-16 px-4 bg-secondary"
+      style={{ backgroundImage: "url('/images/about-1.jpg')" }}
+    >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
-          <h2 className="section-title">Our Core Values</h2>
+          <h2 className="section-title" style={{color: "white"}}>Our Core Values</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
-          <p className="section-subtitle">
-            These principles guide everything we do in our mission to empower
-            communities.
+          <p className="section-subtitle" style={{color: "white"}}>
+            Transforming lives through the power of Love.
           </p>
         </div>
 
@@ -40,7 +42,7 @@ const ValuesSection = () => {
               key={index}
               className="card text-center hover:shadow-lg transition duration-300 fade-in p-6"
             >
-              <div className="text-4xl mb-4">{value.icon}</div>
+              {/* <div className="text-4xl mb-4">{value.icon}</div> */}
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
                 {value.title}
               </h3>

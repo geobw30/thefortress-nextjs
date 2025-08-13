@@ -95,7 +95,7 @@ const StoriesPage = () => {
 
   return (
     <div className="py-16 px-4 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h1 className="section-title">Stories & Testimonials</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
