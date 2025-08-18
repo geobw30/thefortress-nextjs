@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const ValuesSection = () => {
   const values = [
@@ -38,6 +39,59 @@ const ValuesSection = () => {
   // Determine if image should be on left or right (alternating)
   const isImageOnLeft = currentIndex % 2 === 0;
 
+  // Render image with animations based on the image type
+  const renderAnimatedImage = () => {
+    const currentImage = values[currentIndex].image;
+    
+    // Heartbeat animation for love.png
+    if (currentImage === "/images/love.png") {
+      return (
+        <motion.img
+          src={currentImage}
+          alt={values[currentIndex].title}
+          className="max-w-xs md:max-w-sm h-auto object-contain"
+          animate={{
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      );
+    }
+    
+    // Flying animation for butterfly.png
+    if (currentImage === "/images/butterfly.png") {
+      return (
+        <motion.img
+          src={currentImage}
+          alt={values[currentIndex].title}
+          className="max-w-xs md:max-w-sm h-auto object-contain"
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 5, 0, -5, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      );
+    }
+    
+    // Default image without animation for other images
+    return (
+      <img
+        src={currentImage}
+        alt={values[currentIndex].title}
+        className="max-w-xs md:max-w-sm h-auto object-contain"
+      />
+    );
+  };
+
   return (
     <section
       className="min-h-screen flex items-center justify-center py-16 px-4 bg-secondary"
@@ -60,11 +114,7 @@ const ValuesSection = () => {
           <div className={`flex flex-col md:flex-row items-center w-full px-4 ${isImageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
             {/* Image */}
             <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
-              <img
-                src={values[currentIndex].image}
-                alt={values[currentIndex].title}
-                className="max-w-xs md:max-w-sm h-auto object-contain"
-              />
+              {renderAnimatedImage()}
             </div>
             
             {/* Text Content */}
