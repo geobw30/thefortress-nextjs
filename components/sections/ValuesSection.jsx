@@ -14,7 +14,7 @@ const ValuesSection = () => {
       title: "Family",
       description:
         "We empower the family institution as the best place for children to flourish",
-      image: "/images/family-gathering-outline.png",
+      image: "/images/social.png",
     },
     {
       title: "Transformation",
