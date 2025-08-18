@@ -69,10 +69,10 @@ const ValuesSection = () => {
             
             {/* Text Content */}
             <div className="w-full md:w-1/2 text-center md:text-left">
-              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">
+              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 text-primary">
                 {values[currentIndex].title}
               </h3>
-              <p className="text-lg md:text-2xl text-white max-w-2xl">
+              <p className="text-lg md:text-4xl text-white max-w-4xl">
                 {values[currentIndex].description}
               </p>
             </div>

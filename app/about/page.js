@@ -11,15 +11,21 @@ const AboutPage = () => {
         
         <div className="min-h-screen flex flex-col md:flex-row items-center gap-8 mb-16 fade-in">
           <div className="md:w-1/2 w-full">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h2>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-4xl">Our Mission</h2>
             <p className="text-gray-600 mb-6">
-              The Fortress is dedicated to creating sustainable change in underserved communities
-              through education, healthcare, and economic empowerment initiatives. We believe that
-              every individual deserves access to basic necessities and opportunities for growth.
+              The Fortress is a non-profit ( Non Governmental Organisation)
+              committed to championing the cause of the girl child and women:
+              enabling them to overcome their odds and maximize their potential,
+              transforming their lives and as a result, their families and
+              communities.
             </p>
             <p className="text-gray-600 mb-6">
-              Founded in 2010, we have impacted over 50,000 lives across rural communities in East Africa,
-              providing access to clean water, education, and healthcare services.
+              We work with vulnerable girls, mothers, victims of crisis/ teenage
+              pregnancy, child marriage, Gender Based Violance(GBV), abuse as
+              well as HIV AIDS. We rehabilitate, rescue, empower, train in
+              skills and provide counselling and unconditional love! By
+              investing in the girl child and women today, we are building a
+              brighter future for everyone tomorrow!
             </p>
           </div>
           
