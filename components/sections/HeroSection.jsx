@@ -23,7 +23,7 @@ const HeroSection = () => {
           Prevent, Rescue, Restore Dignity and Empower.{" "}
         </h2>
         <p
-          className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto fade-in"
+          className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto fade-in font-bold"
           style={{ color: "#b02a37" }}
         >
           We believe in the power of unconditional love to transform lives.

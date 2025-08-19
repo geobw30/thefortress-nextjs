@@ -1,22 +1,37 @@
 import React from "react";
+import { CardStack } from "@/components/ui/card-stack";
 
 const ImpactSection = () => {
   const impactStats = [
-    { number: "50,000+", label: "Lives Impacted" },
-    { number: "15", label: "Communities Served" },
-    { number: "100+", label: "Water Wells Built" },
-    { number: "5", label: "Countries Active" },
+    { number: "3400+", label: "Girls Empowered in Life Skills" },
+    { number: "320+", label: "Young Mothers Rescued" },
+    { number: "1870+", label: "Mama Kits Distributed" },
+    { number: "650+", label: "Re-Usable Sanitary Kits Donated" },
+    { number: "450+", label: "Community Outreaches" },
+    { number: "580+", label: "Medical Support" },
+    { number: "479+", label: "Girls Counselled" },
+    { number: "298+", label: "Family Reunifications" },
+  ];
+
+  const cardStackImages = [
+    { id: 1, src: "/images/impact-1.jpg", alt: "Community Impact" },
+    { id: 2, src: "/images/our-programs-1.jpg", alt: "Education Program" },
+    { id: 3, src: "/images/our-programs-2.jpg", alt: "Healthcare Initiative" },
+    { id: 4, src: "/images/our-programs-3.jpg", alt: "Empowerment Workshop" },
+    { id: 5, src: "/images/our-programs-4.jpg", alt: "Community Gathering" },
   ];
 
   return (
-    <section className="py-16 px-4 bg-primary text-white">
+    <section className="py-16 px-4 text-white" style={{backgroundColor: "rgb(175 136 126)"}}>
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
-          <h2 className="section-title" style={{color: "white"}}>Our Impact</h2>
+          <h2 className="section-title" style={{ color: "white" }}>
+            Our Impact
+          </h2>
           <div className="w-20 h-1 bg-white mx-auto"></div>
-          <p className="section-subtitle" style={{color: "white"}}>
+          <p className="section-subtitle" style={{ color: "white" }}>
             Through our programs and partnerships, we've made a significant
-            difference in communities across East Africa.
+            difference in communities we serve.
           </p>
         </div>
 
@@ -37,28 +52,51 @@ const ImpactSection = () => {
               <h3 className="text-2xl font-semibold mb-4">
                 Transforming Lives by the Power of Love
               </h3>
-              <p className="mb-4">
-                We believe in empowering girls and women to overcome their
-                challenges as well a skilling and educating them in all possible
-                ways through our various programs. We believe in the
-                transformative power of love, and as such receive and serve
-                every girl and woman with unconditional love regardless of their
-                story, past, mistakes or failures. Love is the most excellent
-                way for changing and restoring lives.
-              </p>
               <p>
-                As a christian organization, we believe in reuniting people with
-                their greatest lover-God and helping them pursue a growing
-                relationship with Him through christian discipleship. We however
-                work with and serve people from all religions and faith is not
-                mandatory for our beneficiaries.
+                We believe in{" "}
+                <span className="font-bold text-black">
+                  empowering girls and women
+                </span>{" "}
+                to overcome challenges by providing{" "}
+                <span className="font-bold text-black">
+                  skills, education, and opportunity
+                </span>{" "}
+                through our programs.
+              </p>
+
+              <p className="pt-5">
+                At the heart of everything we do is the{" "}
+                <span className="font-bold text-black">
+                  transformative power of love
+                </span>
+                . We serve every girl and woman with
+                <span className="font-bold text-black">
+                  {" "}
+                  unconditional love
+                </span>{" "}
+                — regardless of their story, past, mistakes, or failures.
+              </p>
+
+              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5">
+                <span className="text-primary font-extrabold">Love</span> is the most excellent way to change and restore lives.
+              </blockquote>
+
+              <p className="pt-5">
+                As a{" "}
+                <span className="font-bold text-black">
+                  Christian organization
+                </span>
+                , we believe in reuniting people with their greatest lover —
+                <span className="font-bold text-black"> God</span> — and helping
+                them grow through discipleship. <br /> <br />
+                <span className="font-bold">
+                  We serve people from all religions and faith is never
+                  mandatory for our beneficiaries.
+                </span>
               </p>
             </div>
-            <div className="md:w-1/2 w-full">
-              <div
-                className="bg-secondary rounded-xl w-full h-64 flex items-center justify-center bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/impact-1.jpg')" }}
-              ></div>
+            <div className="md:w-1/2 w-full pt-10">
+              <CardStack items={cardStackImages} />
             </div>
           </div>
         </div>
