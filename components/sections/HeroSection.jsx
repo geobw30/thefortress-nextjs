@@ -7,7 +7,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0">
         <div className="video-container">
           <video autoPlay loop muted className="w-full h-full object-cover">
-            <source src="/videos/hero-video.mp4" type="video/mp4" />
+            <source src="/videos/fortress-hero-section.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

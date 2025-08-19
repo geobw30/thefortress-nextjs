@@ -26,10 +26,10 @@ const AboutSection = () => {
       <div className="absolute inset-0 z-0">
         <ThreeDMarquee images={images} className="h-full" />
       </div>
-      
+
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-white bg-opacity-80 z-10"></div>
-      
+
       {/* Content */}
       <div className="max-w-4xl mx-auto w-full relative z-20 py-16">
         <div className="text-center mb-12 fade-in">
@@ -38,7 +38,7 @@ const AboutSection = () => {
         </div>
 
         <div className="flex flex-col items-center text-center gap-8 fade-in mt-40">
-          <div className="w-full">
+          <div className="md:w-1/2 w-full">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4 text-4xl">
               Our Mission
             </h3>
@@ -63,6 +63,9 @@ const AboutSection = () => {
             >
               Learn More About Us
             </button>
+          </div>
+          <div className="md:w-1/2 w-full">
+            <p>Image goes here</p>
           </div>
         </div>
       </div>
