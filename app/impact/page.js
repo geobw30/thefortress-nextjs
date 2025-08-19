@@ -2,10 +2,14 @@ import React from "react";
 
 const ImpactPage = () => {
   const impactStats = [
-    { number: "50,000+", label: "Lives Impacted" },
-    { number: "15", label: "Communities Served" },
-    { number: "100+", label: "Water Wells Built" },
-    { number: "5", label: "Countries Active" },
+    { number: "3400+", label: "Girls Empowered in Life Skills" },
+    { number: "320+", label: "Young Mothers Rescued" },
+    { number: "1870+", label: "Mama Kits Distributed" },
+    { number: "650+", label: "Re-Usable Sanitary Kits Donated" },
+    { number: "450+", label: "Community Outreaches" },
+    { number: "580+", label: "Medical Support" },
+    { number: "479+", label: "Girls Counselled" },
+    { number: "298+", label: "Family Reunifications" },
   ];
 
   const stories = [
@@ -43,14 +47,11 @@ const ImpactPage = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {impactStats.map((stat, index) => (
-            <div
-              key={index}
-              className="text-center bg-secondary p-6 rounded-lg fade-in"
-            >
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+            <div key={index} className="text-center fade-in">
+              <div className="text-4xl md:text-5xl mb-2 font-extrabold">
                 {stat.number}
               </div>
-              <div className="text-xl text-gray-800">{stat.label}</div>
+              <div className="text-xl">{stat.label}</div>
             </div>
           ))}
         </div>

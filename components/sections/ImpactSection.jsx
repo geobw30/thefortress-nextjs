@@ -28,8 +28,8 @@ const ImpactSection = () => {
           <h2 className="section-title" style={{ color: "white" }}>
             Our Impact
           </h2>
-          <div className="w-20 h-1 bg-white mx-auto"></div>
-          <p className="section-subtitle" style={{ color: "white" }}>
+          <div className="w-20 h-1 bg-primary mx-auto"></div>
+          <p className="section-subtitle text-xl" style={{ color: "white" }}>
             Through our programs and partnerships, we've made a significant
             difference in communities we serve.
           </p>
@@ -38,7 +38,7 @@ const ImpactSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {impactStats.map((stat, index) => (
             <div key={index} className="text-center fade-in">
-              <div className="text-4xl md:text-5xl font-bold mb-2">
+              <div className="text-4xl md:text-5xl mb-2 font-extrabold">
                 {stat.number}
               </div>
               <div className="text-xl">{stat.label}</div>
@@ -48,8 +48,8 @@ const ImpactSection = () => {
 
         <div className=" rounded-lg p-8 fade-in">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2 w-full">
-              <h3 className="text-2xl font-semibold mb-4">
+            <div className="md:w-1/2 w-full text-lg">
+              <h3 className="text-2xl font-extrabold mb-4 text-primary">
                 Transforming Lives by the Power of Love
               </h3>
               <p>

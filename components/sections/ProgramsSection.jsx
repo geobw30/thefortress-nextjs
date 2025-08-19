@@ -37,7 +37,7 @@ const ProgramsSection = () => {
         <div className="text-center mb-12 fade-in">
           <h2 className="section-title">Our Programs</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
-          <p className="section-subtitle">
+          <p className="section-subtitle text-xl">
             To groom and release women of integrity and courage / valor that
             will live to their full potential and influence the world around
             them.
