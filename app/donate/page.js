@@ -2,10 +2,10 @@ import React from 'react'
 
 const DonatePage = () => {
   const donationOptions = [
-    { amount: "$25", description: "Provides clean water for a family for a month" },
-    { amount: "$50", description: "Supplies educational materials for a classroom" },
-    { amount: "$100", description: "Supports healthcare services for 10 people" },
-    { amount: "$250", description: "Funds a month of teacher training" }
+    { amount: "$30", description: "Buys a Mother and Baby Value Kit" },
+    { amount: "$50", description: "" },
+    { amount: "$100", description: "" },
+    { amount: "$150", description: "" }
   ]
 
   return (

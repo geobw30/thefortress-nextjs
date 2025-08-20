@@ -1,6 +1,20 @@
 import React from "react";
+import SectionDivider from "@/components/layout/SectionDivider";
 
 const AboutPage = () => {
+  const directors = [
+    {
+      name: "Ps. Titus and Mrs. Josephine Nsubuga",
+      title: "Executive Directors",
+      profile:
+        "Mrs. Josephine Nsubuga together with her husband, Pr. Titus Nsubuga, run the Fortress. \
+        They are blessed with three biological children as well as many teenagers in their care \
+        through the Fortress. The Fortress is a work of love birthed by Josephine: a passionate and \
+        compassionate woman who has been serving vulnerable women and girls since her start as a midwife\
+        in a National Referal hospital.",
+      image: "/images/fort-leaders.png",
+    },
+  ];
   return (
     <div className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto w-full">
@@ -9,7 +23,7 @@ const AboutPage = () => {
           <div className="w-20 h-1 bg-primary mx-auto"></div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center mb-16 fade-in bg-gray-100 p-10">
+        <div className="flex flex-col md:flex-row items-center mb-8 fade-in bg-gray-100 p-10">
           <div className="md:w-1/2 w-full">
             <div className="rounded-xl w-full h-64 md:h-96 flex items-center justify-center">
               <img
@@ -63,7 +77,9 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="mb-16 fade-in">
+        <SectionDivider bgColor="#f8f4f3ff" flipColor="#FFFFFF" />
+
+        <div className="mb-8 fade-in mt-10">
           <h2 className="section-title text-center">Our Vision</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <div className="max-w-4xl mx-auto text-center">
@@ -75,17 +91,19 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="mb-16 fade-in bg-gray-100 p-10 rounded-lg">
+        <SectionDivider flip bgColor="#f7f0efff" flipColor="#FFFFFF" />
+
+        <div className="mb-8 fade-in bg-gray-100 p-10 rounded-lg mt-10">
           <h2 className="section-title text-center">Our Mission</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
               To{" "}
               <span className="font-semibold text-gray-600">
-                instill in girls and women {" "}
+                instill in girls and women{" "}
               </span>
               the understanding of their{" "}
-              <span className="font-semibold">value and purpose{" "}</span>
+              <span className="font-semibold">value and purpose </span>
               and enable them to rise above their limitations, achieving maximum
               impact in their lives.
             </p>
@@ -99,15 +117,8 @@ const AboutPage = () => {
                 economic empowerment
               </span>
               ,
-              <span className="font-semibold text-gray-600">
-                {" "}
-                medical care
-              </span>
-              ,
-              <span className="font-semibold text-gray-600">
-                {" "}
-                counselling
-              </span>
+              <span className="font-semibold text-gray-600"> medical care</span>
+              ,<span className="font-semibold text-gray-600"> counselling</span>
               , and
               <span className="font-semibold text-gray-600">
                 {" "}
@@ -118,45 +129,67 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <div className="mb-16 fade-in">
+        <SectionDivider bgColor="#f7f0efff" flipColor="#FFFFFF" />
+
+        <div className="mb-8 fade-in mt-10">
           <h2 className="section-title text-center">Our Core Values</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
-          <div className="max-w-4xl mx-auto text-center mt-8">
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold">
-                Love
-              </div>
-              <div className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold">
-                Family
-              </div>
-              <div className="bg-primary text-white px-6 py-3 rounded-full text-lg font-semibold">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className="bg-red-100 p-6 rounded-lg shadow-md">
+              <h3 className="text-2xl font-bold text-red-800 mb-4">Love</h3>
+              <p className="text-gray-700">
+                We believe in the power of unconditional love to transform lives
+              </p>
+            </div>
+            <div className="bg-blue-100 p-6 rounded-lg shadow-md">
+              <h3 className="text-2xl font-bold text-blue-800 mb-4">Family</h3>
+              <p className="text-gray-700">
+                We empower the family institution as the best place for children
+                to flourish
+              </p>
+            </div>
+            <div className="bg-green-100 p-6 rounded-lg shadow-md">
+              <h3 className="text-2xl font-bold text-green-800 mb-4">
                 Transformation
-              </div>
+              </h3>
+              <p className="text-gray-700">
+                We are committed to holistic restoration and transformation for
+                our beneficiaries
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="mb-16 fade-in">
+        <SectionDivider flip bgColor="#f7f0efff" flipColor="#FFFFFF" />
+
+        <div className="mb-8 fade-in mt-10">
           <h2 className="section-title text-center">Our Leadership</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {[1, 2, 3].map((item) => (
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-8">
+            {directors.map((item) => (
               <div key={item} className="text-center card p-6">
-                <div className="bg-secondary border-2 border-dashed rounded-full w-32 h-32 mx-auto mb-4"></div>
+                <div
+                  className="bg-secondary rounded-full w-32 h-32 mx-auto mb-4"
+                  style={{
+                    backgroundImage: `url(${item.image})`,
+                    backgroundPosition: "center",
+                    width: "190px",
+                    height: "200px",
+                  }}
+                ></div>
                 <h3 className="text-xl font-semibold text-gray-800">
-                  John Doe
+                  {item.name}
                 </h3>
-                <p className="text-primary">Executive Director</p>
-                <p className="text-gray-600 mt-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore.
-                </p>
+                <p className="text-primary">{item.title}</p>
+                <p className="text-gray-600 mt-2">{item.profile}</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-secondary rounded-lg p-8 fade-in">
+        <SectionDivider bgColor="#f8f4f3ff" flipColor="#FFFFFF" />
+
+        {/* <div className="bg-secondary rounded-lg p-8 fade-in mb-8 mt-10">
           <h2 className="section-title text-center">Our History</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <div className="space-y-6 mt-8">
@@ -197,7 +230,7 @@ const AboutPage = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
