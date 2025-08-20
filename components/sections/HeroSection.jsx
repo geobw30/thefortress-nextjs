@@ -1,6 +1,10 @@
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
+  const router = useRouter();
+
   return (
     <section className="relative h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden">
       {/* Video background */}
@@ -29,8 +33,8 @@ const HeroSection = () => {
           We believe in the power of unconditional love to transform lives.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center fade-in">
-          <button className="btn-primary">Learn More</button>
-          <button className="btn-secondary text-gray-900">Donate Now</button>
+          <button className="btn-primary" onClick={() => router.push("/about")}>Learn More</button>
+          <button className="btn-secondary text-gray-900" onClick={() => router.push("/donate")}>Donate Now</button>
         </div>
       </div>
 

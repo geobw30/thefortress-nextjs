@@ -6,7 +6,7 @@ import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 const AnimatedSection = ({
   children,
   className = "",
-  animationType = "fade", // 'fade', 'slide-up', 'slide-down', 'slide-left', 'slide-right'
+  animationType = "none", // 'fade', 'slide-up', 'slide-down', 'slide-left', 'slide-right'
   delay = 0,
   threshold = 0.1
 }) => {

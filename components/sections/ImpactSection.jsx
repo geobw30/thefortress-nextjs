@@ -22,7 +22,10 @@ const ImpactSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 text-white" style={{backgroundColor: "rgb(175 136 126)"}}>
+    <section
+      className="py-16 px-4 text-white"
+      style={{ backgroundColor: "rgb(175 136 126)" }}
+    >
       <div className="max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h2 className="section-title" style={{ color: "white" }}>
@@ -48,17 +51,18 @@ const ImpactSection = () => {
 
         <div className=" rounded-lg p-8 fade-in">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2 w-full text-lg">
+            <div className="md:w-1/2 w-full text-xl">
               <h3 className="text-2xl font-extrabold mb-4 text-primary">
-                Transforming Lives by the Power of Love
+                <span className="text-white">Transforming Lives</span> by the
+                Power of Love
               </h3>
               <p>
                 We believe in{" "}
-                <span className="font-bold text-black">
+                <span className="font-extrabold">
                   empowering girls and women
                 </span>{" "}
                 to overcome challenges by providing{" "}
-                <span className="font-bold text-black">
+                <span className="font-extrabold">
                   skills, education, and opportunity
                 </span>{" "}
                 through our programs.
@@ -66,29 +70,25 @@ const ImpactSection = () => {
 
               <p className="pt-5">
                 At the heart of everything we do is the{" "}
-                <span className="font-bold text-black">
+                <span className="font-extrabold">
                   transformative power of love
                 </span>
                 . We serve every girl and woman with
-                <span className="font-bold text-black">
-                  {" "}
-                  unconditional love
-                </span>{" "}
-                — regardless of their story, past, mistakes, or failures.
+                <span className="font-extrabold"> unconditional love</span> —
+                regardless of their story, past, mistakes, or failures.
               </p>
 
               <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5">
-                <span className="text-primary font-extrabold">Love</span> is the most excellent way to change and restore lives.
+                <span className="text-primary font-extrabold">Love</span> is the
+                most excellent way to change and restore lives.
               </blockquote>
 
               <p className="pt-5">
                 As a{" "}
-                <span className="font-bold text-black">
-                  Christian organization
-                </span>
-                , we believe in reuniting people with their greatest lover —
-                <span className="font-bold text-black"> God</span> — and helping
-                them grow through discipleship. <br /> <br />
+                <span className="font-extrabold">Christian organization</span>,
+                we believe in reuniting people with their greatest lover —
+                <span className="font-extrabold"> God</span> — and helping them
+                grow through discipleship. <br /> <br />
                 <span className="font-bold">
                   We serve people from all religions and faith is never
                   mandatory for our beneficiaries.
