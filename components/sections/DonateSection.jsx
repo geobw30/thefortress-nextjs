@@ -2,19 +2,10 @@ import React from "react";
 
 const DonateSection = () => {
   const donationOptions = [
-    {
-      amount: "$25",
-      description: "Provides clean water for a family for a month",
-    },
-    {
-      amount: "$50",
-      description: "Supplies educational materials for a classroom",
-    },
-    {
-      amount: "$100",
-      description: "Supports healthcare services for 10 people",
-    },
-    { amount: "$250", description: "Funds a month of teacher training" },
+    { amount: "$30", description: "Buys a Mother and Baby Value Kit" },
+    { amount: "$50", description: "" },
+    { amount: "$100", description: "" },
+    { amount: "$150", description: "" },
   ];
 
   return (
@@ -31,19 +22,28 @@ const DonateSection = () => {
 
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2 fade-in w-full">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-              Make a Difference Today
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Every contribution, no matter the size, makes a meaningful impact
-              in the lives of those we serve. Your generosity helps us provide
-              education, healthcare, clean water, and economic opportunities to
-              communities in need.
-            </p>
-            <p className="text-gray-600 mb-6">
-              All donations are tax-deductible and go directly toward funding
-              our programs and services.
-            </p>
+            <div className="card p-6 mb-10">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                Make a Difference Today
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Every contribution, no matter the size, makes a meaningful
+                impact in the lives of those we serve. Your generosity helps us
+                provide education, healthcare, and economic opportunities to
+                girls and women in need.
+              </p>
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                  How to donate
+                </h3>
+                <p className="text-gray-600">
+                  You can send your donations through{" "}
+                  <b>bank transfer to our account</b>, <b>PayPal</b> or the{" "}
+                  <b>Commission Ministers Network</b>.
+                </p>
+              </div>
+            </div>
+
             <div className="card p-6">
               <h4 className="text-lg font-semibold text-gray-800 mb-4">
                 Ways to Give
@@ -145,27 +145,67 @@ const DonateSection = () => {
               </div>
 
               <div className="mb-6">
-                <label className="form-label" htmlFor="custom-amount">
-                  Or enter a custom amount:
-                </label>
-                <div className="flex">
-                  <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500">
-                    $
-                  </span>
-                  <input
-                    type="number"
-                    id="custom-amount"
-                    className="form-input rounded-none rounded-r-md"
-                    placeholder="0.00"
-                  />
+                <h4 className="text-lg font-medium text-gray-700 mb-3">
+                  Donate Through:
+                </h4>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://www.paypal.com/paypalme/TheFortressUg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2"
+                  >
+                    <img
+                      src="/images/btn-paypal-donate.png"
+                      style={{ height: "150px" }}
+                      alt="PayPal Donate"
+                    />
+                  </a>
+                  <a
+                    href="https://cmnetwork.denarionline.com/Donate/?missionary=Fortress"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2"
+                  >
+                    <img
+                      src="/images/btn-cmn-donate.png"
+                      style={{ height: "60px", width: "200px" }}
+                      alt="Commission Ministers Network"
+                    />
+                  </a>
                 </div>
               </div>
 
-              <button className="w-full btn-primary">Donate Securely</button>
-
-              <p className="text-center text-gray-500 text-sm mt-4">
-                Your donation is secure and tax-deductible
-              </p>
+              <div className="border-t border-gray-200 pt-6">
+                <h4 className="text-lg font-medium text-gray-700 mb-3">
+                  Bank Transfer Details
+                </h4>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="font-medium">Account Name:</span>
+                      <span>THE FORTRESS</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Account Number:</span>
+                      <span>9030017088199</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">SWIFT Code:</span>
+                      <span>SBICUGKX</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Bank:</span>
+                      <span>
+                        <img
+                          src="/images/stanbic-bank-logo.png"
+                          alt="Stanbic Bank (U) Limited"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
