@@ -41,14 +41,14 @@ const ImpactPage = () => {
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <p className="section-subtitle">
             Through our programs and partnerships, we've made a significant
-            difference in communities across East Africa.
+            difference in the lives of girls and women.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {impactStats.map((stat, index) => (
             <div key={index} className="text-center fade-in">
-              <div className="text-4xl md:text-5xl mb-2 font-extrabold">
+              <div className="text-4xl md:text-5xl mb-2 font-extrabold text-primary">
                 {stat.number}
               </div>
               <div className="text-xl">{stat.label}</div>

@@ -13,6 +13,11 @@ const GalleryPage = () => {
   const [imageFile, setImageFile] = useState(null)
   const [uploading, setUploading] = useState(false)
   const { data: session, status } = useSession()
+  
+  // Lightbox modal state
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   // Fetch gallery images
   useEffect(() => {
@@ -80,6 +85,58 @@ const GalleryPage = () => {
     }
   }
 
+  // Lightbox functions
+  const openModal = (image, index) => {
+    setSelectedImage(image)
+    setCurrentIndex(index)
+    setIsModalOpen(true)
+    // Prevent background scrolling when modal is open
+    document.body.style.overflow = 'hidden'
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+    setSelectedImage(null)
+    setCurrentIndex(0)
+    // Re-enable background scrolling
+    document.body.style.overflow = 'auto'
+  }
+
+  const goToPrevious = () => {
+    const newIndex = currentIndex === 0 ? galleryImages.length - 1 : currentIndex - 1
+    setCurrentIndex(newIndex)
+    setSelectedImage(galleryImages[newIndex])
+  }
+
+  const goToNext = () => {
+    const newIndex = currentIndex === galleryImages.length - 1 ? 0 : currentIndex + 1
+    setCurrentIndex(newIndex)
+    setSelectedImage(galleryImages[newIndex])
+  }
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isModalOpen) return
+
+      if (e.key === 'Escape') {
+        closeModal()
+      } else if (e.key === 'ArrowLeft') {
+        goToPrevious()
+      } else if (e.key === 'ArrowRight') {
+        goToNext()
+      }
+    }
+
+    if (isModalOpen) {
+      window.addEventListener('keydown', handleKeyDown)
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isModalOpen, currentIndex, galleryImages])
+  
   if (loading) {
     return (
       <div className="py-16 px-4 bg-white min-h-screen flex items-center justify-center">
@@ -98,7 +155,7 @@ const GalleryPage = () => {
           <h1 className="section-title">Our Gallery</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <p className="section-subtitle">
-            Explore images from our work in communities across East Africa.
+            Explore images from our work in communities we serve.
           </p>
           
           {/* Upload button for authenticated users */}
@@ -184,8 +241,12 @@ const GalleryPage = () => {
         )}
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {galleryImages.map((image) => (
-            <div key={image._id} className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          {galleryImages.map((image, index) => (
+            <div
+              key={image._id}
+              className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
+              onClick={() => openModal(image, index)}
+            >
               <img
                 src={image.imageUrl}
                 alt={image.title}
@@ -205,6 +266,62 @@ const GalleryPage = () => {
             </div>
           ))}
         </div>
+        
+        {/* Lightbox Modal */}
+        {isModalOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+            onClick={closeModal}
+          >
+            {/* Modal content */}
+            <div
+              className="relative max-w-6xl max-h-[90vh] w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking on the image
+            >
+              {/* Close button */}
+              <button
+                className="absolute top-4 right-4 text-white text-4xl z-10"
+                onClick={closeModal}
+              >
+                &times;
+              </button>
+              
+              {/* Navigation buttons */}
+              <button
+                className="absolute left-4 text-white text-5xl z-10"
+                onClick={goToPrevious}
+              >
+                &#8249;
+              </button>
+              
+              <button
+                className="absolute right-4 text-white text-5xl z-10"
+                onClick={goToNext}
+              >
+                &#8250;
+              </button>
+              
+              {/* Image display */}
+              <div className="max-w-full max-h-full flex items-center justify-center">
+                <img
+                  src={selectedImage?.imageUrl}
+                  alt={selectedImage?.title}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+              
+              {/* Image info */}
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4 text-center">
+                <h3 className="text-xl font-semibold">{selectedImage?.title}</h3>
+                <p className="text-gray-300">{selectedImage?.description}</p>
+                <p className="text-xs mt-1 text-gray-400">
+                  Uploaded by {selectedImage?.uploadedBy?.name} |
+                  Image {currentIndex + 1} of {galleryImages.length}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
         
         {galleryImages.length === 0 && !loading && (
           <div className="text-center py-12">

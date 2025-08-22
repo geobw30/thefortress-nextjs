@@ -13,6 +13,17 @@ const Header = () => {
   const router = useRouter()
   const pathname = usePathname()
 
+  // Function to check if a link is active
+  const isActive = (href) => {
+    // For the home page, we want exact match
+    if (href === '/') {
+      return pathname === '/'
+    }
+    // For other pages, we want to match the start of the path
+    // This allows for subpages to also highlight the main nav item
+    return pathname === href || pathname.startsWith(href + '/')
+  }
+
   const handleSignOut = async () => {
     await signOut({ redirect: false })
     router.push('/')
@@ -69,25 +80,25 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+            <Link href="/" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`}>
               Home
             </Link>
-            <Link href="/about" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+            <Link href="/about" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/about') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`}>
               About
             </Link>
-            <Link href="/programs" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+            <Link href="/programs" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/programs') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`}>
               Programs
             </Link>
-            <Link href="/impact" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+            <Link href="/impact" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/impact') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`}>
               Impact
             </Link>
-            <Link href="/gallery" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+            <Link href="/gallery" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/gallery') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`}>
               Gallery
             </Link>
-            <Link href="/stories" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+            <Link href="/stories" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/stories') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`}>
               Stories
             </Link>
-            <Link href="/donate" className="text-gray-800 hover:text-primary font-medium transition duration-300">
+            <Link href="/donate" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/donate') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`}>
               Donate
             </Link>
           </nav>
@@ -146,25 +157,25 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t max-h-[calc(100vh-100px)] overflow-y-auto">
             <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`} onClick={() => setIsMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/about" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/about" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/about') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`} onClick={() => setIsMenuOpen(false)}>
                 About
               </Link>
-              <Link href="/programs" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/programs" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/programs') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`} onClick={() => setIsMenuOpen(false)}>
                 Programs
               </Link>
-              <Link href="/impact" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/impact" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/impact') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`} onClick={() => setIsMenuOpen(false)}>
                 Impact
               </Link>
-              <Link href="/gallery" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/gallery" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/gallery') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`} onClick={() => setIsMenuOpen(false)}>
                 Gallery
               </Link>
-              <Link href="/stories" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/stories" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/stories') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`} onClick={() => setIsMenuOpen(false)}>
                 Stories
               </Link>
-              <Link href="/donate" className="text-gray-800 hover:text-primary font-medium transition duration-300" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/donate" className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${isActive('/donate') ? 'bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded' : ''}`} onClick={() => setIsMenuOpen(false)}>
                 Donate
               </Link>
               

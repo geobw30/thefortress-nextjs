@@ -56,34 +56,30 @@ const ImpactSection = () => {
                 <span className="text-white">Transforming Lives</span> by the
                 Power of Love
               </h3>
-              <p>
-                We believe in{" "}
+
+              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
                 <span className="font-extrabold">
-                  empowering girls and women
+                  Empowering girls and women
                 </span>{" "}
                 to overcome challenges by providing{" "}
                 <span className="font-extrabold">
                   skills, education, and opportunity
                 </span>{" "}
                 through our programs.
-              </p>
-
-              <p className="pt-5">
-                At the heart of everything we do is the{" "}
-                <span className="font-extrabold">
-                  transformative power of love
-                </span>
-                . We serve every girl and woman with
+              </blockquote>
+                
+              {/* <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
+                We serve every girl and woman with
                 <span className="font-extrabold"> unconditional love</span> —
                 regardless of their story, past, mistakes, or failures.
-              </p>
-
-              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5">
+              </blockquote> */}
+              
+              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
                 <span className="text-primary font-extrabold">Love</span> is the
                 most excellent way to change and restore lives.
               </blockquote>
 
-              <p className="pt-5">
+              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
                 As a{" "}
                 <span className="font-extrabold">Christian organization</span>,
                 we believe in reuniting people with their greatest lover —
@@ -93,7 +89,7 @@ const ImpactSection = () => {
                   We serve people from all religions and faith is never
                   mandatory for our beneficiaries.
                 </span>
-              </p>
+              </blockquote>
             </div>
             <div className="md:w-1/2 w-full pt-10">
               <CardStack items={cardStackImages} />

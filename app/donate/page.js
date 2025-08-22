@@ -15,8 +15,7 @@ const DonatePage = () => {
           <h1 className="section-title">Support Our Mission</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <p className="section-subtitle">
-            Your donation helps us continue our vital work in communities that
-            need it most.
+            Your donation helps us continue our vital work in the lives of girls and women in the communities we serve.
           </p>
         </div>
 

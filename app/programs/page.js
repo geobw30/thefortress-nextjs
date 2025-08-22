@@ -3,6 +3,7 @@
 import React from "react";
 import { programs } from '../../lib/programData';
 import { useRouter } from 'next/navigation';
+import DonateSection from '../../components/sections/DonateSection';
 
 const ProgramsPage = () => {
   const router = useRouter();
@@ -54,34 +55,8 @@ const ProgramsPage = () => {
           ))}
         </div>
 
-        <div className="mt-16 bg-secondary rounded-lg p-8 fade-in">
-          <h2 className="section-title text-center">Get Involved</h2>
-          <div className="flex flex-col md:flex-row gap-8 mt-8 p-5">
-            <div className="md:w-1/2 w-full">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Support Our Programs
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Your donation helps us continue our vital work in communities
-                that need it most. Every contribution, no matter the size, makes
-                a meaningful impact.
-              </p>
-              <button className="btn-primary">Donate Now</button>
-            </div>
-            <div className="md:w-1/2 w-full">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Volunteer With Us
-              </h3>
-              <p className="text-gray-600 mb-4">
-                Join our team of dedicated volunteers who are making a
-                difference in communities across East Africa. From professional
-                skills to hands-on work, we have opportunities for everyone.
-              </p>
-              <button className="bg-gray-800 hover:bg-black text-white font-bold py-2 px-6 rounded-full transition duration-300">
-                Volunteer Opportunities
-              </button>
-            </div>
-          </div>
+        <div className="mt-16">
+          <DonateSection />
         </div>
       </div>
     </div>
