@@ -1,38 +1,11 @@
+"use client";
+
 import React from "react";
+import { programs } from '../../lib/programData';
+import { useRouter } from 'next/navigation';
 
 const ProgramsPage = () => {
-  const programs = [
-    {
-      title: "THE DROP-IN CENTRE",
-      description: "A temporary safe loving haven for girls and women in need.",
-      image: "/images/our-programs-1.jpg",
-      impact: "100+ girls rescued",
-      goal: "Expand to 500 students by 2026",
-    },
-    {
-      title: "GAREP",
-      description: "A temporary safe loving haven for girls and women in need.",
-      image: "/images/our-programs-2.jpg",
-      impact: "200+ seminars, conferences and outreaches",
-      goal: "Hold 20+ outreaches annually",
-    },
-    {
-      title: "EDUCATION AND SKILLING",
-      description:
-        "Girls and women are empowered through skilling and education.",
-      image: "/images/our-programs-3.jpg",
-      impact: "250+ girls skilled",
-      goal: "Skill and educate 1000+ women and girls",
-    },
-    {
-      title: "WOMAN OF PURPOSE COMMUNITY OUTREACH",
-      description:
-        "Focused on helping women in the community through both on station training, and outreaches.",
-      image: "/images/our-programs-4.jpg",
-      impact: "1,000+ women supported",
-      goal: "Create 5,000 sustainable jobs",
-    },
-  ];
+  const router = useRouter();
 
   return (
     <div className="py-16 px-4 bg-white">
@@ -41,15 +14,14 @@ const ProgramsPage = () => {
           <h1 className="section-title">Our Programs</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <p className="section-subtitle">
-            We focus on comprehensive solutions that address the root causes of
-            poverty and inequality.
+            Transforming lives by the power of love.
           </p>
         </div>
 
         <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-8">
-          {programs.map((program, index) => (
+          {programs.map((program) => (
             <div
-              key={index}
+              key={program.id}
               className="card hover:shadow-lg transition duration-300 fade-in"
             >
               <div
@@ -60,7 +32,7 @@ const ProgramsPage = () => {
                 <h2 className="text-2xl font-semibold text-gray-800 mb-2">
                   {program.title}
                 </h2>
-                <p className="text-gray-600 mb-4">{program.description}</p>
+                <p className="text-gray-600 mb-4">{program.shortDescription}</p>
                 <div className="mb-4">
                   <div className="flex justify-between mb-1">
                     <span className="text-gray-700 font-medium">Impact:</span>
@@ -71,7 +43,10 @@ const ProgramsPage = () => {
                     <span className="text-gray-600">{program.goal}</span>
                   </div>
                 </div>
-                <button className="text-primary font-semibold hover:text-blue-800 transition duration-300">
+                <button
+                  className="text-primary font-semibold hover:text-blue-800 transition duration-300"
+                  onClick={() => router.push(`/programs/${program.id}`)}
+                >
                   Learn More →
                 </button>
               </div>

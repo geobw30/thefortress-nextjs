@@ -2,34 +2,10 @@
 
 import React from "react";
 import { useRouter } from 'next/navigation';
+import { programs } from '../../lib/programData';
 
 const ProgramsSection = () => {
   const router = useRouter();
-  const programs = [
-    {
-      title: "THE DROP-IN CENTRE",
-      description: "A temporary safe loving haven for girls and women in need.",
-      image: "/images/our-programs-1.jpg",
-    },
-    {
-      title: "GAREP",
-      description:
-        "Girls At-Risk Empowerment Project serves girls in risky environments.",
-      image: "/images/our-programs-2.jpg",
-    },
-    {
-      title: "EDUCATION AND SKILLING",
-      description:
-        "Girls and women are empowered through skilling and education.",
-      image: "/images/our-programs-3.jpg",
-    },
-    {
-      title: "WOMAN OF PURPOSE COMMUNITY OUTREACH",
-      description:
-        "Focused on helping women in the community through both on station training, and outreaches.",
-      image: "/images/our-programs-4.jpg",
-    },
-  ];
 
   return (
     <section className="min-h-screen flex items-center justify-center py-16 px-4 bg-white">
@@ -45,9 +21,9 @@ const ProgramsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {programs.map((program, index) => (
+          {programs.map((program) => (
             <div
-              key={index}
+              key={program.id}
               className="card hover:shadow-lg transition duration-300 fade-in"
             >
               <div
@@ -58,10 +34,10 @@ const ProgramsSection = () => {
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {program.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{program.description}</p>
+                <p className="text-gray-600 mb-4">{program.shortDescription}</p>
                 <button
                   className="text-primary font-semibold hover:text-blue-800 transition duration-300"
-                  onClick={() => router.push("/programs")}
+                  onClick={() => router.push(`/programs/${program.id}`)}
                 >
                   Learn More →
                 </button>
