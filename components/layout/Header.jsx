@@ -4,11 +4,14 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   const { data: session, status } = useSession()
   const router = useRouter()
+  const pathname = usePathname()
 
   const handleSignOut = async () => {
     await signOut({ redirect: false })
@@ -26,9 +29,36 @@ const Header = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+  
+  // Handle scroll detection to show/hide header
+  useEffect(() => {
+    const updateHeaderVisibility = () => {
+      // Always show header on non-home pages
+      if (pathname !== '/') {
+        setIsVisible(true);
+        return;
+      }
+      
+      // On home page, show header when scrolling down, hide when at top
+      if (window.scrollY > 0) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    
+    // Set initial state
+    updateHeaderVisibility();
+    
+    window.addEventListener('scroll', updateHeaderVisibility);
+    
+    return () => window.removeEventListener('scroll', updateHeaderVisibility);
+  }, [pathname]);
 
   return (
-    <header className="bg-white shadow-md">
+    <header className={`bg-white shadow-md transition-all duration-300 ease-in-out fixed top-0 left-0 right-0 z-50 ${
+      isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+    }`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">

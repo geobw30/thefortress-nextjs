@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import SessionWrapper from "../components/layout/SessionWrapper";
+import MainContentWrapper from "../components/layout/MainContentWrapper";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 
@@ -35,7 +36,9 @@ export default async function RootLayout({ children }) {
         <SessionWrapper session={session}>
           <div className="flex flex-col min-h-screen">
             <Header />
-            <main className="flex-grow">{children}</main>
+            <main className="flex-grow">
+              <MainContentWrapper>{children}</MainContentWrapper>
+            </main>
             <Footer />
           </div>
         </SessionWrapper>

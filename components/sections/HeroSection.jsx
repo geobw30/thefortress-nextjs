@@ -9,12 +9,16 @@ const HeroSection = () => {
     <section className="relative h-screen flex items-center justify-center bg-gray-900 text-white overflow-hidden">
       {/* Video background */}
       <div className="absolute inset-0 z-0">
-        <div className="video-container">
-          <video autoPlay loop muted className="w-full h-full object-cover">
-            <source src="/videos/fortress-hero-section.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/videos/fortress-hero-section.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       </div>
 
