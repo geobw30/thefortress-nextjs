@@ -135,7 +135,7 @@ const DonateSection = () => {
                   {donationOptions.map((option, index) => (
                     <button
                       key={index}
-                      className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 rounded-lg transition duration-300"
+                      className="border-2 border-primary text-primary hover:bg-primary font-semibold py-3 rounded-lg transition duration-300"
                     >
                       <div className="font-bold">{option.amount}</div>
                       <div className="text-sm">{option.description}</div>
@@ -153,7 +153,7 @@ const DonateSection = () => {
                     href="https://www.paypal.com/paypalme/TheFortressUg"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2"
+                    className="flex-1 flex items-center justify-center gap-2 transition-shadow duration-300 hover:shadow-lg"
                   >
                     <img
                       src="/images/btn-paypal-donate.png"
@@ -165,7 +165,7 @@ const DonateSection = () => {
                     href="https://cmnetwork.denarionline.com/Donate/?missionary=Fortress"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2"
+                    className="flex-1 flex items-center justify-center gap-2 transition-shadow duration-300 hover:shadow-lg"
                   >
                     <img
                       src="/images/btn-cmn-donate.png"
