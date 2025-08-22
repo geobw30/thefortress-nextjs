@@ -89,6 +89,29 @@ const ValuesSection = () => {
       return <AnimatedButterfly />;
     }
 
+    // Slow magnification animation for Family value
+    if (currentValue === "Family") {
+      return (
+        <motion.div
+          className="flex items-center justify-center overflow-hidden"
+          animate={{
+            scale: [1, 1.05, 1],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        >
+          <img
+            src={currentImage}
+            alt={values[currentIndex].title}
+            className="max-w-xs md:max-w-sm h-auto object-contain"
+          />
+        </motion.div>
+      );
+    }
+
     // Default image without animation for other images
     return (
       <img
