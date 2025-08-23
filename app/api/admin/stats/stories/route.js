@@ -2,6 +2,9 @@ import { isAdmin } from '@/lib/adminAuth'
 import mongoose from 'mongoose'
 import Story from '@/models/Story'
 
+// Add this line to force dynamic rendering
+export const dynamic = 'force-dynamic'
+
 export async function GET(request) {
   try {
     // Check if user is admin

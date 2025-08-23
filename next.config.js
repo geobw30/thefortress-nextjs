@@ -6,6 +6,14 @@ const nextConfig = {
   images: {
     domains: ['res.cloudinary.com'],
   },
+  // Ensure proper asset handling
+  assetPrefix: '',
+  // Enable production browser source maps for debugging
+  productionBrowserSourceMaps: true,
+  // Ensure proper client-side component handling
+  experimental: {
+    optimizeCss: true,
+  },
 }
 
-export default nextConfig
+module.exports = nextConfig

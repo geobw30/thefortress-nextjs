@@ -1,3 +1,6 @@
+/* These directives require Tailwind CSS processing via PostCSS. 
+   If you see "Unknown at rule @tailwind", ensure your build tool is configured for Tailwind CSS. 
+   Remove these lines if you are not using Tailwind, or configure your build tool accordingly. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -206,4 +209,12 @@ a, button {
 
 .alert-success {
   @apply bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded relative;
+}
+
+
+/* Test CSS - add this to the end of your file */
+.test-css-working {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 24px;
 }
