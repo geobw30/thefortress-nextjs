@@ -12,7 +12,7 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   // Ensure proper client-side component handling
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Removed due to issues with Vercel deployment
   },
 }
 
