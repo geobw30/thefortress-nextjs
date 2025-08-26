@@ -39,7 +39,7 @@ This project involved creating a comprehensive website for "The Fortress", a non
 - **Backend**: Next.js API Routes, MongoDB with Mongoose
 - **Authentication**: NextAuth.js
 - **Image Storage**: Cloudinary
-- **Deployment**: Vercel (recommended), Docker (alternative)
+- **Deployment**: Vercel (recommended), Docker and Heroku (alternatives)
 
 ## Project Structure
 
@@ -73,7 +73,7 @@ The website follows a well-organized structure with:
 ## Deployment Ready
 
 The website is ready for deployment with:
-- Detailed deployment guide for various platforms including Docker
+- Detailed deployment guide for various platforms including Docker and Heroku
 - Environment variable configuration
 - Database migration instructions
 - Monitoring and maintenance recommendations

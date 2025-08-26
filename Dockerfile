@@ -43,14 +43,6 @@ EXPOSE 3000
 
 # Environment variables
 ENV NODE_ENV=production
-# MongoDB connection string
-ENV MONGODB_URI=mongodb+srv://geobw30:3n73ri2e-@cluster-fortress.vs02q6u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-fortress
-# NextAuth.js secret
-ENV NEXTAUTH_SECRET=my-next-auth-secret
-# Cloudinary configuration
-ENV CLOUDINARY_CLOUD_NAME=dgu88jb8u
-ENV CLOUDINARY_API_KEY=243182339171463
-ENV CLOUDINARY_API_SECRET=ceVGeEsbBTRky3k3nJoLF6esFjM
 
 # Start the Next.js application
 CMD ["npm", "start"]
