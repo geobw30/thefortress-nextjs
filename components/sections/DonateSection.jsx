@@ -36,7 +36,7 @@ const DonateSection = () => {
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">
                   How to donate
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black-600">
                   You can send your donations through{" "}
                   <b>bank transfer to our account</b>, <b>PayPal</b> or the{" "}
                   <b>Commission Ministers Network</b>.
@@ -45,7 +45,7 @@ const DonateSection = () => {
             </div>
 
             <div className="card p-6">
-              <h4 className="text-lg font-semibold text-gray-800 mb-4">
+              <h4 className="text-lg font-semibold text-black-800 mb-4">
                 Ways to Give
               </h4>
               <ul className="space-y-2">
@@ -176,7 +176,7 @@ const DonateSection = () => {
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-6">
+              <div className="border-t border-black-200 pt-6">
                 <h4 className="text-lg font-medium text-gray-700 mb-3">
                   Bank Transfer Details
                 </h4>

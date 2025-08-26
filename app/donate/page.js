@@ -207,7 +207,7 @@ const DonatePage = () => {
               </div>
 
               <div className="border-t border-gray-200 pt-6">
-                <h4 className="text-lg font-medium text-gray-700 mb-3">
+                <h4 className="text-lg font-medium text-black-700 mb-3">
                   Bank Transfer Details
                 </h4>
                 <div className="bg-gray-50 p-4 rounded-lg">

@@ -57,7 +57,7 @@ const ImpactSection = () => {
                 Power of Love
               </h3>
 
-              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
+              <blockquote className="text-lg md:text-lg font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
                 <span className="font-extrabold">
                   Empowering girls and women
                 </span>{" "}
@@ -67,24 +67,21 @@ const ImpactSection = () => {
                 </span>{" "}
                 through our programs.
               </blockquote>
-                
-              {/* <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
-                We serve every girl and woman with
-                <span className="font-extrabold"> unconditional love</span> —
-                regardless of their story, past, mistakes, or failures.
-              </blockquote> */}
-              
+
               <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
                 <span className="text-primary font-extrabold">Love</span> is the
                 most excellent way to change and restore lives.
               </blockquote>
 
-              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
+              <blockquote className="text-lg md:text-lg font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
                 As a{" "}
                 <span className="font-extrabold">Christian organization</span>,
                 we believe in reuniting people with their greatest lover —
                 <span className="font-extrabold"> God</span> — and helping them
-                grow through discipleship. <br /> <br />
+                grow through discipleship.
+              </blockquote>
+
+              <blockquote className="text-lg md:text-lg font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
                 <span className="font-bold">
                   We serve people from all religions and faith is never
                   mandatory for our beneficiaries.
