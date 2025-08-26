@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "next build"
+    "vercel-build": "next build",
+    "docker:build": "docker build -t thefortress-app .",
+    "docker:run": "docker run -d -p 3000:3000 --name thefortress-app thefortress-app",
+    "docker:dev": "docker-compose up -d"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

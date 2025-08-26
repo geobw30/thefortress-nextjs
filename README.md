@@ -105,6 +105,29 @@ Authenticated users can share their stories and testimonials. Admin users can ma
 
 To deploy the application, you can use Vercel, which is optimized for Next.js applications. Make sure to set up the environment variables in your deployment platform.
 
+### Docker Deployment
+
+This project includes Docker support for consistent development and production environments:
+
+1. Copy the `.env.example` file to `.env.local` and fill in your configuration:
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your actual values
+   ```
+
+2. Build and run with Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. Access the application at http://localhost:3000
+
+For production deployment, you can build the Docker image separately:
+```bash
+docker build -t thefortress-app .
+docker run -d -p 3000:3000 thefortress-app
+```
+
 ## Learn More
 
 To learn more about the technologies used in this project:
