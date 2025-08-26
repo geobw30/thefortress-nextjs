@@ -128,37 +128,6 @@ docker build -t thefortress-app .
 docker run -d -p 3000:3000 thefortress-app
 ```
 
-### Heroku Deployment
-
-This project can also be deployed to Heroku using Docker:
-
-1. Ensure you have the Heroku CLI installed and are logged in:
-   ```bash
-   heroku login
-   ```
-
-2. Create a new Heroku app:
-   ```bash
-   heroku create your-app-name
-   ```
-
-3. Set the required environment variables:
-   ```bash
-   heroku config:set MONGODB_URI=your_mongodb_connection_string
-   heroku config:set NEXTAUTH_SECRET=your_nextauth_secret
-   heroku config:set NEXTAUTH_URL=https://your-app-name.herokuapp.com
-   heroku config:set CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-   heroku config:set CLOUDINARY_API_KEY=your_cloudinary_api_key
-   heroku config:set CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-   ```
-
-4. Deploy the application:
-   ```bash
-   git push heroku main
-   ```
-
-For more detailed Heroku deployment instructions, see [DEPLOYMENT_HEROKU.md](DEPLOYMENT_HEROKU.md).
-
 ## Learn More
 
 To learn more about the technologies used in this project:
