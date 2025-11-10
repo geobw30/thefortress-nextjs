@@ -2,8 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import React from "react";
-import { ThreeDMarquee } from "@/components/ui/3d-marquee";
-import SectionDivider from "../layout/SectionDivider";
 
 const AboutSection = () => {
   const router = useRouter();
@@ -19,14 +17,18 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="min-h-screen px-4 relative overflow-hidden">
-      {/* 3D Marquee Background */}
-      <div className="absolute inset-0 z-0">
-        <ThreeDMarquee images={images} className="h-full" />
-      </div>
-
+    <section
+      className="min-h-screen px-4 relative overflow-hidden bg-white"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%), url('/images/about-1.jpg')",
+        backgroundSize: "60%",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "right",
+      }}
+    >
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-white bg-opacity-80 z-10"></div>
+      <div className="absolute inset-0 bg-white bg-opacity-0 z-10"></div>
 
       {/* Content */}
       <div className="max-w-4xl mx-auto w-full relative z-20 py-16">
@@ -71,7 +73,7 @@ const AboutSection = () => {
               Learn More About Us
             </button>
           </div>
-          <div className="md:w-1/2 w-full">
+          {/* <div className="md:w-1/2 w-full">
             <div className="rounded-xl overflow-hidden transform scale-150 origin-center opacity-50">
               <img
                 src="/images/bg-family-group.png"
@@ -79,7 +81,7 @@ const AboutSection = () => {
                 className="w-full h-auto object-cover"
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

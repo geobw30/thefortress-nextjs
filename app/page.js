@@ -6,29 +6,34 @@ import ProgramsSection from "../components/sections/ProgramsSection";
 import DonateSection from "../components/sections/DonateSection";
 import AnimatedSection from "../components/sections/AnimatedSection";
 import SectionDivider from "../components/layout/SectionDivider";
+import ChallengeSection from "@/components/sections/ChallengeSection";
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
-      <SectionDivider bgColor="#F8F9F9"  flipColor="#f4f5f7ff"/>
+      <SectionDivider bgColor="#F8F9F9" flipColor="#FFF" />
       <AnimatedSection delay={100}>
         <AboutSection />
       </AnimatedSection>
-      <SectionDivider flip bgColor="#F7F4F2" flipColor="#FAFAFA" />
+      <SectionDivider flip bgColor="#FFF" flipColor="#F8F9F9" />
       <AnimatedSection delay={200}>
+        <ChallengeSection />
+      </AnimatedSection>
+      <SectionDivider flip bgColor="#F7F4F2" flipColor="#FFF" />
+      <AnimatedSection delay={300}>
         <ValuesSection />
       </AnimatedSection>
       <SectionDivider bgColor="#AF887E" flipColor="#F7F4F2" />
-      <AnimatedSection delay={400}>
+      <AnimatedSection delay={500}>
         <ImpactSection />
       </AnimatedSection>
       <SectionDivider flip bgColor="#FFFFFF" flipColor="#AF887E" />
-      <AnimatedSection delay={600}>
+      <AnimatedSection delay={700}>
         <ProgramsSection />
       </AnimatedSection>
       <SectionDivider bgColor="#e6e8ecff" flipColor="#FFFFFF" />
-      <AnimatedSection delay={800}>
+      <AnimatedSection delay={900}>
         <DonateSection />
       </AnimatedSection>
     </main>
