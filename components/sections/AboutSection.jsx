@@ -18,13 +18,14 @@ const AboutSection = () => {
 
   return (
     <section
-      className="min-h-screen px-4 relative overflow-hidden bg-white"
+      className="min-h-screen px-4 relative overflow-hidden"
       style={{
         backgroundImage:
-          "linear-gradient(to right, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%), url('/images/about-1.jpg')",
+          "linear-gradient(to right, rgba(248, 249, 249,1) 20%, rgba(248, 249, 249,0) 100%), url('/images/about-1.jpg')",
         backgroundSize: "60%",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "right",
+        backgroundColor: "rgb(248, 249, 249)"
       }}
     >
       {/* Overlay for better text readability */}

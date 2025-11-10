@@ -22,11 +22,15 @@ const ImpactSection = () => {
   ];
 
   return (
-    <section
-      className="py-16 px-4 text-white"
-      style={{ backgroundColor: "rgb(175 136 126)" }}
-    >
-      <div className="max-w-6xl mx-auto w-full">
+    <section className="relative min-h-screen py-16 px-4 text-white overflow-hidden">
+      {/* Full-screen background CardStack */}
+      <CardStack items={cardStackImages} fullScreen={true} opacity={0.4} />
+
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-25 z-10"></div>
+
+      {/* Content positioned over the background */}
+      <div className="relative z-20 max-w-6xl mx-auto w-full">
         <div className="text-center mb-12 fade-in">
           <h2 className="section-title" style={{ color: "white" }}>
             Our Impact
@@ -38,63 +42,15 @@ const ImpactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16 mt-20 ">
           {impactStats.map((stat, index) => (
             <div key={index} className="text-center fade-in">
-              <div className="text-4xl md:text-5xl mb-2 font-extrabold">
+              <div className="text-4xl md:text-5xl mb-2 font-extrabold text-primary">
                 {stat.number}
               </div>
               <div className="text-xl">{stat.label}</div>
             </div>
           ))}
-        </div>
-
-        <div className=" rounded-lg p-8 fade-in">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/2 w-full text-xl">
-              <h3 className="text-2xl font-extrabold mb-4 text-primary">
-                <span className="text-white">Transforming Lives</span> by the
-                Power of Love
-              </h3>
-
-              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
-                <span className="font-extrabold">
-                  Empowering girls and women
-                </span>{" "}
-                to overcome challenges by providing{" "}
-                <span className="font-extrabold">
-                  skills, education, and opportunity
-                </span>{" "}
-                through our programs.
-              </blockquote>
-                
-              {/* <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
-                We serve every girl and woman with
-                <span className="font-extrabold"> unconditional love</span> —
-                regardless of their story, past, mistakes, or failures.
-              </blockquote> */}
-              
-              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
-                <span className="text-primary font-extrabold">Love</span> is the
-                most excellent way to change and restore lives.
-              </blockquote>
-
-              <blockquote className="text-2xl md:text-3xl font-bold text-gray-800 italic border-l-4 border-red-600 pl-4 pt-5 mb-5">
-                As a{" "}
-                <span className="font-extrabold">Christian organization</span>,
-                we believe in reuniting people with their greatest lover —
-                <span className="font-extrabold"> God</span> — and helping them
-                grow through discipleship. <br /> <br />
-                <span className="font-bold">
-                  We serve people from all religions and faith is never
-                  mandatory for our beneficiaries.
-                </span>
-              </blockquote>
-            </div>
-            <div className="md:w-1/2 w-full pt-10">
-              <CardStack items={cardStackImages} />
-            </div>
-          </div>
         </div>
       </div>
     </section>

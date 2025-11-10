@@ -8,6 +8,8 @@ export const CardStack = ({
   items,
   offset,
   scaleFactor,
+  fullScreen = false,
+  opacity = 1,
 }) => {
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
@@ -27,6 +29,34 @@ export const CardStack = ({
       });
     }, 5000);
   };
+
+  if (fullScreen) {
+    return (
+      <div className="absolute inset-0 w-full h-full" style={{ opacity }}>
+        {cards.map((card, index) => {
+          return (
+            <motion.div
+              key={card.id}
+              className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden"
+              style={{
+                transformOrigin: "center",
+              }}
+              animate={{
+                scale: 1 - index * SCALE_FACTOR,
+                zIndex: cards.length - index,
+              }}
+            >
+              <img
+                src={card.src}
+                alt={card.alt || `Image ${card.id}`}
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <div className="relative h-[22.5rem] w-[22.5rem] md:h-[22.5rem] md:w-[36rem]">

@@ -188,49 +188,6 @@ const AboutPage = () => {
         </div>
 
         <SectionDivider bgColor="#f8f4f3ff" flipColor="#FFFFFF" />
-
-        {/* <div className="bg-secondary rounded-lg p-8 fade-in mb-8 mt-10">
-          <h2 className="section-title text-center">Our History</h2>
-          <div className="w-20 h-1 bg-primary mx-auto"></div>
-          <div className="space-y-6 mt-8">
-            <div className="border-l-4 border-primary pl-4 py-2">
-              <h3 className="text-xl font-semibold text-gray-800">
-                2010 - Founding
-              </h3>
-              <p className="text-gray-600">
-                The Fortress was founded with a mission to provide sustainable
-                solutions to communities in need.
-              </p>
-            </div>
-            <div className="border-l-4 border-primary pl-4 py-2">
-              <h3 className="text-xl font-semibold text-gray-800">
-                2013 - First Major Project
-              </h3>
-              <p className="text-gray-600">
-                Launched our first comprehensive education program in rural
-                Kenya, building 5 schools.
-              </p>
-            </div>
-            <div className="border-l-4 border-primary pl-4 py-2">
-              <h3 className="text-xl font-semibold text-gray-800">
-                2016 - Expansion
-              </h3>
-              <p className="text-gray-600">
-                Expanded operations to Uganda and Tanzania, increasing our reach
-                to 20,000 beneficiaries.
-              </p>
-            </div>
-            <div className="border-l-4 border-primary pl-4 py-2">
-              <h3 className="text-xl font-semibold text-gray-800">
-                2020 - Digital Transformation
-              </h3>
-              <p className="text-gray-600">
-                Integrated technology into our programs, improving efficiency
-                and impact measurement.
-              </p>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

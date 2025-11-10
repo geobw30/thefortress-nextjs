@@ -10,7 +10,7 @@ const ChallengeSection = () => {
       setHighlightedIndex(
         (prevIndex) => (prevIndex + 1) % challengeStats.length
       );
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, []);
