@@ -1,0 +1,87 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
+
+export default function ImpactStats({stats}) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Simple count up animation without external library
+  const [visibleCounts, setVisibleCounts] = useState({});
+
+  useEffect(() => {
+    if (!isClient) return;
+
+    const interval = setInterval(() => {
+      setVisibleCounts((prev) => {
+        const newCounts = {};
+        stats.forEach((stat, i) => {
+          const current = prev[i] || 0;
+          const target = stat.number;
+          const increment = Math.max(1, Math.floor(target / 50));
+          newCounts[i] = current + increment >= target ? target : current + increment;
+        });
+        return newCounts;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isClient]);
+
+  if (!isClient) {
+    // SSR static version
+    return (
+      <section className="bg-gradient-to-b from-indigo-50 to-white py-16 px-6 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Impact</h2>
+        <div className="w-20 h-1 bg-primary mx-auto"></div>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-12">
+          Through our programs and partnerships, we've made a significant difference in the communities we serve.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat, i) => (
+            <div key={i} className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center">
+              <div className="text-primary mb-2 text-4xl">{stat.icon}</div>
+              <h3 className="text-4xl font-extrabold text-primary">
+                {stat.number}+
+              </h3>
+              <p className="mt-2 text-gray-700 text-sm">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="bg-gradient-to-b from-indigo-50 to-white py-16 px-6 text-center">
+      <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Impact</h2>
+      <div className="w-20 h-1 bg-primary mx-auto"></div>
+      <p className="text-gray-600 max-w-2xl mx-auto mb-12 mt-5">
+        Through our programs and partnerships, we've made a significant difference in the communities we serve.
+      </p>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
+        {stats.map((stat, i) => (
+          <div
+            key={i}
+            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-center"
+            style={{
+              opacity: 1,
+              transform: "translateY(0px)"
+            }}
+          >
+            <div className="text-primary mb-2 text-4xl">{stat.icon}</div>
+            <h3 className="text-4xl font-extrabold text-primary">
+              {(visibleCounts[i] || 0).toLocaleString()}+
+            </h3>
+            <p className="mt-2 text-gray-700 text-sm">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

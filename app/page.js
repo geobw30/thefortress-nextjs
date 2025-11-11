@@ -24,11 +24,11 @@ export default function Home() {
       <AnimatedSection delay={300}>
         <ValuesSection />
       </AnimatedSection>
-      <SectionDivider bgColor="rgb(var(--secondary-color))" flipColor="#F7F4F2" />
+      <SectionDivider bgColor="#eef2ff" flipColor="#F7F4F2" />
       <AnimatedSection delay={500}>
         <ImpactSection />
       </AnimatedSection>
-      <SectionDivider flip bgColor="#FFFFFF" flipColor="rgb(var(--secondary-color))" />
+      <SectionDivider flip bgColor="#FFFFFF" flipColor="#eef2ff" />
       <AnimatedSection delay={700}>
         <ProgramsSection />
       </AnimatedSection>

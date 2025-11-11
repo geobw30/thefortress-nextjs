@@ -327,13 +327,30 @@ button {
 /* Responsive honeycomb grid */
 @media (max-width: 768px) {
   .honeycomb-grid {
-    gap: 1px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
     padding: 10px;
   }
 
+  .honeycomb-row {
+    display: contents;
+  }
+
   .hexagon {
-    width: 40px;
-    height: 69px;
+    width: 100px;
+    height: 86px;
+    margin: 5px auto;
+  }
+
+  .hexagon-md {
+    width: 80px;
+    height: 77px;
+  }
+
+  .hexagon-sm {
+    width: 60px;
+    height: 52px;
   }
 
   .hexagon-content {
