@@ -15,7 +15,8 @@ const DonatePage = () => {
           <h1 className="section-title">Support Our Mission</h1>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <p className="section-subtitle">
-            Your donation helps us continue our vital work in the lives of girls and women in the communities we serve.
+            Your donation helps us continue our vital work in the lives of girls
+            and women in the communities we serve.
           </p>
         </div>
 
@@ -25,7 +26,7 @@ const DonatePage = () => {
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">
                 Why Your Support Matters
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-black mb-6">
                 Every contribution, no matter the size, makes a meaningful
                 impact in the lives of those we serve. Your generosity helps us
                 provide education, healthcare, and economic opportunities to
@@ -35,7 +36,7 @@ const DonatePage = () => {
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">
                   How to donate
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-black">
                   You can send your donations through{" "}
                   <b>bank transfer to our account</b>, <b>PayPal</b> or the{" "}
                   <b>Commission Ministers Network</b>.
@@ -44,7 +45,7 @@ const DonatePage = () => {
             </div>
 
             <div className="card p-5">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+              <h2 className="text-2xl font-semibold text-black mb-6">
                 Other Ways to Give
               </h2>
               <ul className="space-y-4">
@@ -65,7 +66,7 @@ const DonatePage = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span className="ml-3 text-gray-600">
+                  <span className="ml-3 text-black">
                     Monthly recurring donation
                   </span>
                 </li>
@@ -86,7 +87,7 @@ const DonatePage = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span className="ml-3 text-gray-600">
+                  <span className="ml-3 text-black">
                     Corporate matching gifts
                   </span>
                 </li>
@@ -107,7 +108,7 @@ const DonatePage = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span className="ml-3 text-gray-600">Planned giving</span>
+                  <span className="ml-3 text-black">Planned giving</span>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 mt-1">
@@ -126,7 +127,7 @@ const DonatePage = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span className="ml-3 text-gray-600">In-kind donations</span>
+                  <span className="ml-3 text-black">In-kind donations</span>
                 </li>
                 <li className="flex items-start">
                   <div className="flex-shrink-0 mt-1">
@@ -145,7 +146,7 @@ const DonatePage = () => {
                       ></path>
                     </svg>
                   </div>
-                  <span className="ml-3 text-gray-600">Fundraising events</span>
+                  <span className="ml-3 text-black">Fundraising events</span>
                 </li>
               </ul>
             </div>
@@ -206,8 +207,8 @@ const DonatePage = () => {
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-6">
-                <h4 className="text-lg font-medium text-gray-700 mb-3">
+              <div className="border-t border-gray-200 pt-6 text-black">
+                <h4 className="text-lg font-medium text-black mb-3">
                   Bank Transfer Details
                 </h4>
                 <div className="bg-gray-50 p-4 rounded-lg">

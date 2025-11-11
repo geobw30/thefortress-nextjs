@@ -85,7 +85,7 @@ const Footer = () => {
               <p className="mb-4">Email: thefortresswop2019@gmail.com</p>
               <p className="mb-4">Phone: +256 772 97403</p>
 
-              <form
+              {/* <form
                 action="mailto:willis988@gmail.com"
                 method="post"
                 encType="text/plain"
@@ -129,7 +129,7 @@ const Footer = () => {
                 >
                   Send Message
                 </button>
-              </form>
+              </form> */}
             </address>
           </div>
         </div>

@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "The Fortress - Non-Profit Organization",
   description:
-    "Supporting communities through education, healthcare, and sustainable development",
+    "Supporting girls and women through education, healthcare, and sustainable development",
   icons: {
     icon: "/icons/favicon.ico",
     shortcut: "/icons/favicon.ico",

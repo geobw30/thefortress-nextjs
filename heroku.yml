@@ -1,0 +1,5 @@
+build:
+  docker:
+    web: npm run docker:build
+run:
+  web: npm run docker:run

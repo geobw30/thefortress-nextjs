@@ -14,22 +14,25 @@ const ImpactPage = () => {
 
   const stories = [
     {
-      title: "Building Futures Through Education",
+      title: "Dream come true!",
       excerpt:
-        "How our scholarship program helped Maria become the first in her family to attend university.",
-      image: "/images/story1.jpg",
+        "I was born a Muslim and lived a muslim my entire life until I got a chance to be rescued at the fortress. During my childhood at around the age of 7years I was raped by my uncle who was an HIV victim but i somehow escaped contracting the HIV. My mother who was a very busy lady with work had little time with us as children and always we felt ...",
+      image: "/images/success-1.jpg",
+      id: 1
     },
     {
-      title: "Clean Water Transforms a Community",
+      title: "Prevention is better than cure",
       excerpt:
-        "The story of how a single well brought clean water to 500 families in rural Kenya.",
-      image: "/images/story2.jpg",
+        "Prevention is better than cure is a very old saying/ proverb but thinking about it really, it’s so true. As the Fortress, we have seen the transformation of every young mother that we rescue, rehabilitation and empower in different ways. However, in addition to that, we realize that we need to put an extra effort in prevention of teenange pregnancy ...",
+      image: "/images/success-2.jpg",
+      id: 2
     },
     {
-      title: "Healthcare Access Saves Lives",
+      title: "The Joy of the Harvest",
       excerpt:
-        "Our mobile clinic program provides critical medical care to remote villages.",
-      image: "/images/story3.jpg",
+        "Part of our National Anthem says “ Oh Uganda the land that feeds us, with SUN and fertlie crops Grown…Now that we are older, we realize that indeed Uganda is blessed with beautifull weather and fertile soil. Well at the Fortress, we get to grow vegetables, maize, sugar cane, beans and planted several fruit trees that we are starting to enjoy like paw paws ...",
+      image: "/images/success-3.jpg",
+      id: 3
     },
   ];
 
@@ -57,7 +60,7 @@ const ImpactPage = () => {
         </div>
 
         <div className="mb-16 fade-in">
-          <h2 className="section-title text-center">Success Stories</h2>
+          <h2 className="section-title text-center text-primary">Success Stories</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {stories.map((story, index) => (
               <div
@@ -65,41 +68,19 @@ const ImpactPage = () => {
                 className="card hover:shadow-lg transition duration-300"
               >
                 <div className="bg-secondary border-2 border-dashed w-full h-48 flex items-center justify-center">
-                  <span className="text-gray-500">Story Image</span>
+                  <img src={story.image} className="w-full h-full object-fill" alt={story.title} />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  <h3 className="text-xl font-semibold text-gray-800 mt-4 mb-4">
                     {story.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{story.excerpt}</p>
-                  <button className="text-primary font-semibold hover:text-blue-800 transition duration-300">
+                  <a href={`/impact/${story.id}`} className="text-primary font-semibold hover:text-blue-800 transition duration-300">
                     Read Full Story →
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div className="bg-secondary rounded-lg p-8 fade-in">
-          <h2 className="section-title text-center">Annual Report</h2>
-          <div className="flex flex-col md:flex-row items-center gap-8 mt-8">
-            <div className="md:w-1/2 w-full">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                2023 Impact Report
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Our annual report details the impact of our programs, financial
-                transparency, and future goals. Download the full report to
-                learn more about our work.
-              </p>
-              <button className="btn-primary">Download Report (PDF)</button>
-            </div>
-            <div className="md:w-1/2 w-full">
-              <div className="bg-secondary border-2 border-dashed rounded-xl w-full h-64 flex items-center justify-center">
-                <span className="text-gray-500">Annual Report Cover</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

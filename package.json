@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-build": "next build",
+    "docker:build": "docker build -t thefortress-app .",
+    "docker:run": "docker run -d -p 3000:3000 --name thefortress-app thefortress-app",
+    "docker:dev": "docker-compose up -d"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -15,19 +19,21 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.553.0",
+    "critters": "^0.0.23",
     "mongoose": "^8.0.0",
     "motion": "^12.23.12",
     "multer": "^1.4.5-lts.1",
-    "next": "^15.0.0",
+    "next": "14.2.5",
     "next-auth": "^4.24.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^3.4.0"
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^15.0.0"
+    "eslint-config-next": "^14.2.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
   }
 }

@@ -3,7 +3,16 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const AnimatedButterfly = () => {
+const SingleButterfly = ({
+  id,
+  startX,
+  startY,
+  endX,
+  endY,
+  duration,
+  delay,
+  size,
+}) => {
   const butterflyImages = [
     "/images/butterfly/butterfly-m1.png",
     "/images/butterfly/butterfly-m2.png",
@@ -11,12 +20,16 @@ const AnimatedButterfly = () => {
     "/images/butterfly/butterfly-m4.png",
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(
+    Math.floor(Math.random() * butterflyImages.length)
+  );
 
   // Cycle through butterfly images for wing flapping effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % butterflyImages.length);
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % butterflyImages.length
+      );
     }, 200); // Change image every 200ms for smooth flapping effect
 
     return () => clearInterval(interval);
@@ -24,24 +37,50 @@ const AnimatedButterfly = () => {
 
   return (
     <motion.div
-      className="relative"
+      className="absolute"
+      initial={{ x: startX, y: startY }}
       animate={{
-        x: [-100, 100, -100], // Move left to right and back
-        y: [0, -50, 0],       // Move up and down for floating effect
+        x: [startX, startX + endX, startX],
+        y: [startY, startY + endY, startY],
       }}
       transition={{
-        duration: 8,           // Total animation duration
-        repeat: Infinity,      // Repeat infinitely
-        repeatType: "loop",    // Loop the animation
-        ease: "easeInOut",     // Smooth easing
+        duration: duration,
+        delay: delay,
+        repeat: Infinity,
+        repeatType: "loop",
+        ease: "easeInOut",
       }}
     >
       <img
         src={butterflyImages[currentImageIndex]}
         alt="Flying butterfly"
-        className="w-32 h-32 md:w-40 md:h-40 object-contain"
+        width={Math.round(50 * size)}
+        height={Math.round(160 * size)}
+        className="object-contain"
       />
     </motion.div>
+  );
+};
+
+const AnimatedButterfly = () => {
+  // Generate 5 butterflies with random properties
+  const butterflies = Array.from({ length: 5 }, (_, i) => ({
+    id: i,
+    startX: Math.random() * 100,
+    startY: Math.random() * 100,
+    endX: (Math.random() - 0.5) * 200,
+    endY: (Math.random() - 0.5) * 100,
+    duration: 5 + Math.random() * 10,
+    delay: Math.random() * 2,
+    size: 0.8 + Math.random() * 0.4,
+  }));
+
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {butterflies.map((butterfly) => (
+        <SingleButterfly key={butterfly.id} {...butterfly} />
+      ))}
+    </div>
   );
 };
 
