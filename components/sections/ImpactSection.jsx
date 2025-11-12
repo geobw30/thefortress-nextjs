@@ -5,6 +5,7 @@ import {
   Users,
   Gift,
   Activity,
+  BriefcaseMedical,
   HelpingHand,
   Smile,
   Home,
@@ -13,18 +14,18 @@ import ImpactStats from "./ImpactStats";
 
 const ImpactSection = () => {
   const stats = [
-    { icon: <Users />, number: 3400, label: "Girls Empowered in Life Skills" },
-    { icon: <Heart />, number: 320, label: "Young Mothers Rescued" },
-    { icon: <Gift />, number: 1870, label: "Mama Kits Distributed" },
+    { icon: <Users size={100}/>, number: 3400, label: "Girls Empowered in Life Skills" },
+    { icon: <Heart size={100}/>, number: 320, label: "Young Mothers Rescued" },
+    { icon: <Gift size={100}/>, number: 1870, label: "Mama Kits Distributed" },
     {
-      icon: <HelpingHand />,
+      icon: <HelpingHand size={100}/>,
       number: 650,
       label: "Re-Usable Sanitary Kits Donated",
     },
-    { icon: <Activity />, number: 450, label: "Community Outreaches" },
-    { icon: "", number: 580, label: "Medical Support" },
-    { icon: <Smile />, number: 479, label: "Girls Counselled" },
-    { icon: <Home />, number: 298, label: "Family Reunifications" },
+    { icon: <Activity size={100}/>, number: 450, label: "Community Outreaches" },
+    { icon: <BriefcaseMedical size={100}/>, number: 580, label: "Medical Support" },
+    { icon: <Smile size={100}/>, number: 479, label: "Girls Counselled" },
+    { icon: <Home size={100}/>, number: 298, label: "Family Reunifications" },
   ];
 
   return <ImpactStats stats={stats} />;

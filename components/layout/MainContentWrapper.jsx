@@ -10,7 +10,7 @@ const MainContentWrapper = ({ children }) => {
   const shouldAddPadding = pathname !== '/';
   
   return (
-    <div className={shouldAddPadding ? 'pt-14' : ''}>
+    <div className={shouldAddPadding ? 'pt-10 mt-20' : ''}>
       {children}
     </div>
   );

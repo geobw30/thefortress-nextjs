@@ -31,7 +31,7 @@ const ChallengeSection = () => {
     { number: "", label: "", shape: "small" },
     {
       number: "11%",
-      label: "girls die due to unsage abortion",
+      label: "girls die due to unsafe abortion",
       shape: "large",
     },
     { number: "", label: "", shape: "medium" },
@@ -79,7 +79,7 @@ const ChallengeSection = () => {
                   <div className="text-sm md:text-3xl font-bold text-hotpink mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm  text-center font-bold text-white">
+                  <div className="text-lg  text-center font-bold text-white">
                     {stat.label}
                   </div>
                 </div>
@@ -107,7 +107,7 @@ const ChallengeSection = () => {
                   <div className="text-sm md:text-3xl font-bold text-hotpink mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-white font-bold text-center">
+                  <div className="text-lg text-white font-bold text-center">
                     {stat.label}
                   </div>
                 </div>
@@ -135,7 +135,7 @@ const ChallengeSection = () => {
                   <div className="text-2xl md:text-3xl font-bold text-hotpink mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm text-white font-bold text-center">
+                  <div className="text-lg text-white font-bold text-center">
                     {stat.label}
                   </div>
                 </div>

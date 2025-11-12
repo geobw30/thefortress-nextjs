@@ -150,10 +150,9 @@ const Header = () => {
             </Link>
             <Link
               href="/donate"
-              className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                isActive("/donate")
-                  ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                  : ""
+              onClick={() => setIsMenuOpen(false)}
+              className={`inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 ${
+                isActive("/donate") ? "ring-1 ring-red-300 bg-secondary text-primary" : ""
               }`}
             >
               Donate
@@ -306,12 +305,10 @@ const Header = () => {
               </Link>
               <Link
                 href="/donate"
-                className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                  isActive("/donate")
-                    ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                    : ""
-                }`}
                 onClick={() => setIsMenuOpen(false)}
+                className={`inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 ${
+                  isActive("/donate") ? "ring-2 ring-primary" : ""
+                }`}
               >
                 Donate
               </Link>

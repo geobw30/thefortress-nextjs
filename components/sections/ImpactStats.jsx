@@ -78,7 +78,7 @@ export default function ImpactStats({stats}) {
             <h3 className="text-4xl font-extrabold text-primary">
               {(visibleCounts[i] || 0).toLocaleString()}+
             </h3>
-            <p className="mt-2 text-gray-700 text-sm">{stat.label}</p>
+            <p className="mt-2 text-gray-700 text-sm"><b>{stat.label}</b></p>
           </div>
         ))}
       </div>

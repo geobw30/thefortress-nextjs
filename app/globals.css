@@ -233,8 +233,8 @@ button {
 
 .hexagon {
   position: relative;
-  width: 200px;
-  height: 190px;
+  width: 350px;
+  height: 330px;
   background: rgb(var(--primary-color));
   clip-path: polygon(
     50% 0%,
@@ -250,7 +250,7 @@ button {
   transition: transform 0.1s ease;
   margin: 10px;
   padding: 80px;
-  font-size:small;
+  font-size: xx-large;
 }
 
 .hexagon-md {
@@ -295,23 +295,23 @@ button {
 
 .hexagon:hover {
   background: #800000; /* Maroon color */
-  transform: scale(1.50); /* Zoom out effect */
+  transform: scale(1.5); /* Zoom out effect */
   z-index: 1;
 }
 
 .hexagon-md:hover {
-  background: rgb(var(--primary-color));; /* Maroon color */
-  transform: scale(1.50); /* Zoom out effect */
+  background: rgb(var(--primary-color)); /* Maroon color */
+  transform: scale(1.5); /* Zoom out effect */
 }
 
 .hexagon-sm:hover {
-  background: rgb(var(--primary-color));; /* Maroon color */
-  transform: scale(1.50); /* Zoom out effect */
+  background: rgb(var(--primary-color)); /* Maroon color */
+  transform: scale(1.5); /* Zoom out effect */
 }
 
 .hexagon-highlighted {
   background: #800000; /* Maroon color */
-  transform: scale(1.50); /* Zoom out effect */
+  transform: scale(1.5); /* Zoom out effect */
   z-index: 1;
 }
 
@@ -321,7 +321,7 @@ button {
 }
 
 .text-hotpink {
-  color: hotpink
+  color: hotpink;
 }
 
 /* Responsive honeycomb grid */

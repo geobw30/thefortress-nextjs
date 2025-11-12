@@ -74,15 +74,6 @@ const AboutSection = () => {
               Learn More About Us
             </button>
           </div>
-          {/* <div className="md:w-1/2 w-full">
-            <div className="rounded-xl overflow-hidden transform scale-150 origin-center opacity-50">
-              <img
-                src="/images/bg-family-group.png"
-                alt="The Fortress Community"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-          </div> */}
         </div>
       </div>
     </section>
