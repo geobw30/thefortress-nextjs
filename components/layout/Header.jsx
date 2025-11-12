@@ -92,70 +92,67 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             <Link
               href="/"
-              className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                isActive("/") ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded" : ""
-              }`}
+              className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
             >
               Home
+              {isActive("/") && (
+                <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+              )}
             </Link>
             <Link
               href="/about"
-              className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                isActive("/about")
-                  ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                  : ""
-              }`}
+              className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
             >
               About
+              {isActive("/about") && (
+                <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+              )}
             </Link>
             <Link
               href="/programs"
-              className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                isActive("/programs")
-                  ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                  : ""
-              }`}
+              className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
             >
               Programs
+              {isActive("/programs") && (
+                <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+              )}
             </Link>
             <Link
               href="/impact"
-              className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                isActive("/impact")
-                  ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                  : ""
-              }`}
+              className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
             >
               Impact
+              {isActive("/impact") && (
+                <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+              )}
             </Link>
             <Link
               href="/gallery"
-              className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                isActive("/gallery")
-                  ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                  : ""
-              }`}
+              className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
             >
               Gallery
+              {isActive("/gallery") && (
+                <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+              )}
             </Link>
             <Link
               href="/stories"
-              className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                isActive("/stories")
-                  ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                  : ""
-              }`}
+              className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
             >
               Stories
+              {isActive("/stories") && (
+                <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+              )}
             </Link>
             <Link
               href="/donate"
               onClick={() => setIsMenuOpen(false)}
-              className={`inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 ${
-                isActive("/donate") ? "ring-1 ring-red-300 bg-secondary text-primary" : ""
-              }`}
+              className="inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 relative flex flex-col items-center"
             >
               Donate
+              {isActive("/donate") && (
+                <div className="w-20 h-1 bg-secondary mx-auto mt-2"></div>
+              )}
             </Link>
           </nav>
 
@@ -239,78 +236,73 @@ const Header = () => {
             <div className="flex flex-col space-y-4">
               <Link
                 href="/"
-                className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                  isActive("/")
-                    ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                    : ""
-                }`}
+                className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
+                {isActive("/") && (
+                  <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
+                )}
               </Link>
               <Link
                 href="/about"
-                className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                  isActive("/about")
-                    ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                    : ""
-                }`}
+                className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
+                {isActive("/about") && (
+                  <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
+                )}
               </Link>
               <Link
                 href="/programs"
-                className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                  isActive("/programs")
-                    ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                    : ""
-                }`}
+                className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Programs
+                {isActive("/programs") && (
+                  <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
+                )}
               </Link>
               <Link
                 href="/impact"
-                className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                  isActive("/impact")
-                    ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                    : ""
-                }`}
+                className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Impact
+                {isActive("/impact") && (
+                  <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
+                )}
               </Link>
               <Link
                 href="/gallery"
-                className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                  isActive("/gallery")
-                    ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                    : ""
-                }`}
+                className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Gallery
+                {isActive("/gallery") && (
+                  <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
+                )}
               </Link>
               <Link
                 href="/stories"
-                className={`text-gray-800 hover:text-primary font-medium transition duration-300 ${
-                  isActive("/stories")
-                    ? "bg-[rgba(176,42,5,0.1)] px-3 py-1 rounded"
-                    : ""
-                }`}
+                className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Stories
+                {isActive("/stories") && (
+                  <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
+                )}
               </Link>
               <Link
                 href="/donate"
                 onClick={() => setIsMenuOpen(false)}
-                className={`inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 ${
-                  isActive("/donate") ? "ring-2 ring-primary" : ""
-                }`}
+                className="inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 relative"
               >
                 Donate
+                {isActive("/donate") && (
+                  <div className="w-20 h-1 bg-secondary mx-auto mt-2"></div>
+                )}
               </Link>
 
               {/* <div className="pt-4 border-t">
