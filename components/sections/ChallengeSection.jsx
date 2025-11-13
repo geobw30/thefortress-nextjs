@@ -46,7 +46,7 @@ const ChallengeSection = () => {
   ];
 
   return (
-    <section className="min-h-screen px-4 relative overflow-hidden bg-white">
+    <section className="challenge-section min-h-screen px-4 relative overflow-hidden bg-white">
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-white bg-opacity-80 z-10"></div>
 
