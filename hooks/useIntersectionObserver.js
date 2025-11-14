@@ -12,18 +12,19 @@ const useIntersectionObserver = (options = {}) => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsIntersecting(entry.isIntersecting);
+        const wasIntersecting = entry.isIntersecting;
+        setIsIntersecting(wasIntersecting);
         // Set hasIntersected to true when element first enters viewport
-        if (entry.isIntersecting) {
+        if (wasIntersecting) {
           setHasIntersected(true);
           setShouldAnimate(true);
         } else {
-          // Reset shouldAnimate when element exits viewport
+          // For bidirectional scrolling, allow animation to reset
           setShouldAnimate(false);
         }
       },
       {
-        threshold: options.threshold || 0.1,
+        threshold: Array.isArray(options.threshold) ? options.threshold : [options.threshold || 0.1],
         rootMargin: options.rootMargin || '0px',
         ...options
       }
