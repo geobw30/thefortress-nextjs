@@ -70,7 +70,7 @@ const ImpactStats = React.forwardRef(({ stats, shouldAnimate = false }, ref) => 
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-center transform transition-all duration-700 ease-out"
+            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg flex flex-col items-center transform transition-all duration-700 ease-out"
             style={{
               opacity: shouldAnimate ? 1 : 0,
               transform: shouldAnimate ? "translateY(0px)" : "translateY(20px)"

@@ -21,8 +21,8 @@ const DonateSection = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="md:w-1/2 fade-in w-full">
-            <div className="card p-6 mb-10">
+          <div className="md:w-1/2 fade-in w-full ">
+            <div className="card p-6 mb-[35%]">
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                 Make a Difference Today
               </h3>

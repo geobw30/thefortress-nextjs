@@ -22,7 +22,7 @@ const DonatePage = () => {
 
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2 fade-in">
-            <div className="card mb-8 p-5">
+            <div className="card mb-8 p-5 mb-[30%]">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">
                 Why Your Support Matters
               </h2>

@@ -147,7 +147,7 @@ const Header = () => {
             <Link
               href="/donate"
               onClick={() => setIsMenuOpen(false)}
-              className="inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 relative flex flex-col items-center"
+              className="bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 relative flex flex-col items-center"
             >
               Donate
               {isActive("/donate") && (
