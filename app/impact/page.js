@@ -1,44 +1,7 @@
-import ImpactStats from "@/components/sections/ImpactStats";
+import ImpactSection from "@/components/sections/ImpactSection";
 import React from "react";
-import {
-  Heart,
-  Users,
-  Gift,
-  Activity,
-  BriefcaseMedical,
-  HelpingHand,
-  Smile,
-  Home,
-} from "lucide-react";
 
 const ImpactPage = () => {
-  const impactStats = [
-    {
-      icon: <Users size={100} strokeWidth={0.75}/>,
-      number: 3400,
-      label: "Girls Empowered in Life Skills",
-    },
-    { icon: <Heart size={100} strokeWidth={0.75}/>, number: 320, label: "Young Mothers Rescued" },
-    { icon: <Gift size={100} strokeWidth={0.75}/>, number: 1870, label: "Mama Kits Distributed" },
-    {
-      icon: <HelpingHand size={100} strokeWidth={0.75}/>,
-      number: 650,
-      label: "Re-Usable Sanitary Kits Donated",
-    },
-    {
-      icon: <Activity size={100} strokeWidth={0.75}/>,
-      number: 450,
-      label: "Community Outreaches",
-    },
-    {
-      icon: <BriefcaseMedical size={100} strokeWidth={0.75}/>,
-      number: 580,
-      label: "Medical Support",
-    },
-    { icon: <Smile size={100} strokeWidth={0.75}/>, number: 479, label: "Girls Counselled" },
-    { icon: <Home size={100} strokeWidth={0.75}/>, number: 298, label: "Family Reunifications" },
-  ];
-
   const stories = [
     {
       title: "Dream come true!",
@@ -50,14 +13,14 @@ const ImpactPage = () => {
     {
       title: "Prevention is better than cure",
       excerpt:
-        "Prevention is better than cure is a very old saying/ proverb but thinking about it really, it’s so true. As the Fortress, we have seen the transformation of every young mother that we rescue, rehabilitation and empower in different ways. However, in addition to that, we realize that we need to put an extra effort in prevention of teenange pregnancy ...",
+        "Prevention is better than cure is a very old saying/ proverb but thinking about it really, it's so true. As the Fortress, we have seen the transformation of every young mother that we rescue, rehabilitation and empower in different ways. However, in addition to that, we realize that we need to put an extra effort in prevention of teenange pregnancy ...",
       image: "/images/success-2.jpg",
       id: 2,
     },
     {
       title: "The Joy of the Harvest",
       excerpt:
-        "Part of our National Anthem says “ Oh Uganda the land that feeds us, with SUN and fertlie crops Grown…Now that we are older, we realize that indeed Uganda is blessed with beautifull weather and fertile soil. Well at the Fortress, we get to grow vegetables, maize, sugar cane, beans and planted several fruit trees that we are starting to enjoy like paw paws ...",
+        "Part of our National Anthem says \"Oh Uganda the land that feeds us, with SUN and fertlie crops Grown…Now that we are older, we realize that indeed Uganda is blessed with beautifull weather and fertile soil. Well at the Fortress, we get to grow vegetables, maize, sugar cane, beans and planted several fruit trees that we are starting to enjoy like paw paws ...",
       image: "/images/success-3.jpg",
       id: 3,
     },
@@ -66,7 +29,7 @@ const ImpactPage = () => {
   return (
     <div className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto w-full">
-        <ImpactStats stats={impactStats} />
+        <ImpactSection />
         <div className="mb-16 fade-in">
           <h2 className="section-title text-center text-primary">
             Success Stories

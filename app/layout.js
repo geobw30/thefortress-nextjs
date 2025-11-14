@@ -6,6 +6,7 @@ import SessionWrapper from "../components/layout/SessionWrapper";
 import MainContentWrapper from "../components/layout/MainContentWrapper";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +38,10 @@ export default async function RootLayout({ children }) {
           <div className="flex flex-col min-h-screen">
             <Header />
             <main className="flex-grow">
-              <MainContentWrapper>{children}</MainContentWrapper>
+              <MainContentWrapper>
+                {children}
+                <SpeedInsights />
+              </MainContentWrapper>
             </main>
             <Footer />
           </div>

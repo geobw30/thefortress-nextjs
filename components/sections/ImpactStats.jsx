@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 
-export default function ImpactStats({stats}) {
+const ImpactStats = React.forwardRef(({ stats, shouldAnimate = false }, ref) => {
   const [isClient, setIsClient] = useState(false);
+  const hasAnimatedRef = useRef(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -14,8 +15,9 @@ export default function ImpactStats({stats}) {
   const [visibleCounts, setVisibleCounts] = useState({});
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient || !shouldAnimate || hasAnimatedRef.current) return;
 
+    hasAnimatedRef.current = true;
     const interval = setInterval(() => {
       setVisibleCounts((prev) => {
         const newCounts = {};
@@ -30,12 +32,12 @@ export default function ImpactStats({stats}) {
     }, 50);
 
     return () => clearInterval(interval);
-  }, [isClient]);
+  }, [isClient, shouldAnimate, stats]);
 
   if (!isClient) {
     // SSR static version
     return (
-      <section className="bg-gradient-to-b from-indigo-50 to-white py-16 px-6 text-center">
+      <section ref={ref} className="bg-gradient-to-b from-indigo-50 to-white py-16 px-6 text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Impact</h2>
         <div className="w-20 h-1 bg-primary mx-auto"></div>
         <p className="text-gray-600 max-w-2xl mx-auto mb-12">
@@ -57,7 +59,7 @@ export default function ImpactStats({stats}) {
   }
 
   return (
-    <section className="bg-gradient-to-b from-indigo-50 to-white py-16 px-6 text-center">
+    <section ref={ref} className="bg-gradient-to-b from-indigo-50 to-white py-16 px-6 text-center">
       <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Impact</h2>
       <div className="w-20 h-1 bg-primary mx-auto"></div>
       <p className="text-gray-600 max-w-2xl mx-auto mb-12 mt-5">
@@ -68,10 +70,10 @@ export default function ImpactStats({stats}) {
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-center"
+            className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition flex flex-col items-center transform transition-all duration-700 ease-out"
             style={{
-              opacity: 1,
-              transform: "translateY(0px)"
+              opacity: shouldAnimate ? 1 : 0,
+              transform: shouldAnimate ? "translateY(0px)" : "translateY(20px)"
             }}
           >
             <div className="text-primary mb-2 text-4xl">{stat.icon}</div>
@@ -84,4 +86,8 @@ export default function ImpactStats({stats}) {
       </div>
     </section>
   );
-}
+});
+
+ImpactStats.displayName = "ImpactStats";
+
+export default ImpactStats;

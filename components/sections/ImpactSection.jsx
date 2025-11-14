@@ -11,6 +11,7 @@ import {
   Home,
 } from "lucide-react";
 import ImpactStats from "./ImpactStats";
+import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 const ImpactSection = () => {
   const stats = [
@@ -28,7 +29,12 @@ const ImpactSection = () => {
     { icon: <Home size={100} strokeWidth={0.75}/>, number: 298, label: "Family Reunifications" },
   ];
 
-  return <ImpactStats stats={stats} />;
+  const { elementRef, isIntersecting } = useIntersectionObserver({
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  });
+
+  return <ImpactStats stats={stats} shouldAnimate={isIntersecting} ref={elementRef} />;
 };
 
 export default ImpactSection;
