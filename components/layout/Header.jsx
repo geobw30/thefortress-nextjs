@@ -232,7 +232,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t max-h-[calc(100vh-100px)] overflow-y-auto">
+          <div className="md:hidden py-4 border-t max-h-[calc(100vh-100px)] max-w-[calc(50vw-20px)] overflow-y-auto">
             <div className="flex flex-col space-y-4">
               <Link
                 href="/"
@@ -297,7 +297,7 @@ const Header = () => {
               <Link
                 href="/donate"
                 onClick={() => setIsMenuOpen(false)}
-                className="inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 relative"
+                className="inline-block bg-primary text-white font-semibold px-4 py-2 rounded-lg shadow hover:bg-primary/90 transition duration-300 relative text-center"
               >
                 Donate
                 {isActive("/donate") && (

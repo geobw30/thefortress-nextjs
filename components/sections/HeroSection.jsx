@@ -37,8 +37,18 @@ const HeroSection = () => {
           We believe in the power of unconditional love to transform lives.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center fade-in">
-          <button className="btn-primary" onClick={() => router.push("/about")}>Learn More</button>
-          <button className="btn-secondary text-gray-900" onClick={() => router.push("/donate")}>Donate Now</button>
+          <button
+            className="btn-secondary"
+            onClick={() => router.push("/about")}
+          >
+            Learn More
+          </button>
+          <button
+            className="btn-primary text-gray-900"
+            onClick={() => router.push("/donate")}
+          >
+            Donate Now
+          </button>
         </div>
       </div>
 
