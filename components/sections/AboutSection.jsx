@@ -35,7 +35,7 @@ const AboutSection = () => {
       <div className="max-w-4xl w-full relative z-20 py-16 pl-40">
         <div className="text-left mb-12 fade-in">
           <h2 className="section-title">About The Fortress</h2>
-          <div className="w-20 h-1 bg-primary"></div>
+          <div className="w-20 h-1 bg-primary mx-35"></div>
         </div>
 
         <div className="flex flex-col md:flex-row items-start gap-2 fade-in mt-40">

@@ -66,7 +66,7 @@ const ImpactStats = React.forwardRef(({ stats, shouldAnimate = false }, ref) => 
         Through our programs and partnerships, we've made a significant difference in the communities we serve.
       </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
+      <div className="grid grid-cols-3 md:grid-cols-3 gap-8 mt-20">
         {stats.map((stat, i) => (
           <div
             key={i}
@@ -80,7 +80,7 @@ const ImpactStats = React.forwardRef(({ stats, shouldAnimate = false }, ref) => 
             <h3 className="text-4xl font-extrabold text-primary">
               {(visibleCounts[i] || 0).toLocaleString()}+
             </h3>
-            <p className="mt-2 text-gray-700 text-sm"><b>{stat.label}</b></p>
+            <p className="mt-2 text-gray-700 text-xl"><b>{stat.label}</b></p>
           </div>
         ))}
       </div>
