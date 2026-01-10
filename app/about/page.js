@@ -162,7 +162,7 @@ const AboutPage = () => {
 
         <SectionDivider flip bgColor="#f7f0efff" flipColor="#FFFFFF" />
 
-        <div className="mb-8 fade-in mt-10">
+        {/* <div className="mb-8 fade-in mt-10">
           <h2 className="section-title text-center">Our Leadership</h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-8">
@@ -187,7 +187,7 @@ const AboutPage = () => {
           </div>
         </div>
 
-        <SectionDivider bgColor="#f8f4f3ff" flipColor="#FFFFFF" />
+        <SectionDivider bgColor="#f8f4f3ff" flipColor="#FFFFFF" /> */}
       </div>
     </div>
   );
