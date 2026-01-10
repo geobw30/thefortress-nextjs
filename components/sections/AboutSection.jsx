@@ -32,7 +32,7 @@ const AboutSection = () => {
       <div className="absolute inset-0 bg-white bg-opacity-0 z-10"></div>
 
       {/* Content */}
-      <div className="max-w-4xl w-full relative z-20 py-16 pl-40">
+      <div className="max-w-4xl w-full relative z-20 py-16 pl-3 md:pl-40">
         <div className="text-left mb-12 fade-in">
           <h2 className="section-title">About The Fortress</h2>
           <div className="w-20 h-1 bg-primary mx-35"></div>

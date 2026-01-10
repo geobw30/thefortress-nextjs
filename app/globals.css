@@ -20,10 +20,12 @@
 
 .challenge-section .hexagon-md {
   animation: float 3.5s ease-in-out infinite;
+  background-color: hotpink;
 }
 
 .challenge-section .hexagon-sm {
   animation: float 2.5s ease-in-out infinite;
+  background-color: hotpink;
 }
 
 :root {
@@ -243,7 +245,7 @@ button {
   position: relative;
   width: 350px;
   height: 330px;
-  background: rgb(var(--primary-color));
+  background: gray;
   clip-path: polygon(
     50% 0%,
     93.3% 25%,
@@ -302,7 +304,7 @@ button {
 }
 
 .hexagon:hover {
-  background: grey; /* Grey color */
+  background: rgb(var(--primary-color)); /* Grey color */
   z-index: 1;
 }
 
@@ -317,7 +319,7 @@ button {
 }
 
 .hexagon-highlighted {
-  background: grey; /* Grey color */
+  background: rgb(var(--primary-color)); /* Grey color */
   transform: scale(1.5); /* Zoom out effect */
   z-index: 1;
 }
