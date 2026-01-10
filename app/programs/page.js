@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { programs } from '../../lib/programData';
-import { useRouter } from 'next/navigation';
-import DonateSection from '../../components/sections/DonateSection';
+import { programs } from "../../lib/programData";
+import { useRouter } from "next/navigation";
+import DonateSection from "../../components/sections/DonateSection";
 
 const ProgramsPage = () => {
   const router = useRouter();
@@ -35,13 +35,19 @@ const ProgramsPage = () => {
                 </h2>
                 <p className="text-gray-600 mb-4">{program.shortDescription}</p>
                 <div className="mb-4">
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-700 font-medium">Impact:</span>
-                    <span className="text-gray-600">{program.impact}</span>
+                  <div className="mb-3">
+                    <span className="text-gray-700 font-medium block mb-1">
+                      Impact:
+                    </span>
+                    <span className="text-gray-600 block">
+                      {program.impact}
+                    </span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-700 font-medium">Goal:</span>
-                    <span className="text-gray-600">{program.goal}</span>
+                  <div className="mb-4">
+                    <span className="text-gray-700 font-medium block mb-1">
+                      Goal:
+                    </span>
+                    <span className="text-gray-600 block">{program.goal}</span>
                   </div>
                 </div>
                 <button

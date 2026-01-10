@@ -6,22 +6,12 @@ import React from "react";
 const AboutSection = () => {
   const router = useRouter();
 
-  // Array of images
-  const images = [
-    "/images/about-1.jpg",
-    "/images/impact-1.jpg",
-    "/images/our-programs-1.jpg",
-    "/images/our-programs-2.jpg",
-    "/images/our-programs-3.jpg",
-    "/images/our-programs-4.jpg",
-  ];
-
   return (
     <section
       className="min-h-screen px-4 relative overflow-hidden"
       style={{
         backgroundImage:
-          "linear-gradient(to right, rgba(248, 249, 249,1) 20%, rgba(248, 249, 249,0) 100%), url('/images/about-1.jpg')",
+          "linear-gradient(to right, rgba(248, 249, 249,1) 01%, rgba(248, 249, 249,0) 100%), url('/images/about-the-fortress.png')",
         backgroundSize: "60%",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "right",

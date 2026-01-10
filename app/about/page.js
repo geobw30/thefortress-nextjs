@@ -2,19 +2,6 @@ import React from "react";
 import SectionDivider from "@/components/layout/SectionDivider";
 
 const AboutPage = () => {
-  const directors = [
-    {
-      name: "Ps. Titus and Mrs. Josephine Nsubuga",
-      title: "Executive Directors",
-      profile:
-        "Mrs. Josephine Nsubuga together with her husband, Pr. Titus Nsubuga, run the Fortress. \
-        They are blessed with three biological children as well as many teenagers in their care \
-        through the Fortress. The Fortress is a work of love birthed by Josephine: a passionate and \
-        compassionate woman who has been serving vulnerable women and girls since her start as a midwife\
-        in a National Referal hospital.",
-      image: "/images/fort-leaders.png",
-    },
-  ];
   return (
     <div className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto w-full">
@@ -27,9 +14,16 @@ const AboutPage = () => {
           <div className="md:w-1/2 w-full">
             <div className="rounded-xl w-full h-64 md:h-96 flex items-center justify-center">
               <img
-                src="/images/bg-family-group.png"
+                src="/images/about-the-fortress.png"
                 alt="The Fortress Community"
                 className="w-full h-auto object-cover"
+                style={{
+                  width: "90%",
+                  height: "100%",
+                  opacity: "0.8",
+                  marginTop: "4em",
+                  borderRadius: "10px",
+                }}
               />
             </div>
           </div>
@@ -161,33 +155,6 @@ const AboutPage = () => {
         </div>
 
         <SectionDivider flip bgColor="#f7f0efff" flipColor="#FFFFFF" />
-
-        <div className="mb-8 fade-in mt-10">
-          <h2 className="section-title text-center">Our Leadership</h2>
-          <div className="w-20 h-1 bg-primary mx-auto"></div>
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mt-8">
-            {directors.map((item) => (
-              <div key={item} className="text-center card p-6">
-                <div
-                  className="bg-secondary rounded-full w-32 h-32 mx-auto mb-4"
-                  style={{
-                    backgroundImage: `url(${item.image})`,
-                    backgroundPosition: "center",
-                    width: "190px",
-                    height: "200px",
-                  }}
-                ></div>
-                <h3 className="text-xl font-semibold text-gray-800">
-                  {item.name}
-                </h3>
-                <p className="text-primary">{item.title}</p>
-                <p className="text-gray-600 mt-2">{item.profile}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <SectionDivider bgColor="#f8f4f3ff" flipColor="#FFFFFF" />
       </div>
     </div>
   );
