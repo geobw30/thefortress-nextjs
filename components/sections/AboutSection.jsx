@@ -25,41 +25,46 @@ const AboutSection = () => {
         backgroundSize: "60%",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "right",
-        backgroundColor: "rgb(248, 249, 249)"
+        backgroundColor: "rgb(248, 249, 249)",
       }}
     >
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-white bg-opacity-0 z-10"></div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto w-full relative z-20 py-16">
-        <div className="text-center mb-12 fade-in">
+      <div className="max-w-4xl w-full relative z-20 py-16 pl-40">
+        <div className="text-left mb-12 fade-in">
           <h2 className="section-title">About The Fortress</h2>
-          <div className="w-20 h-1 bg-primary mx-auto"></div>
+          <div className="w-20 h-1 bg-primary"></div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-8 fade-in mt-40">
-          <div className="md:w-1/2 w-full">
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-6">
-              We work with{" "}
+        <div className="flex flex-col md:flex-row items-start gap-2 fade-in mt-40">
+          <div className=" w-full">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-6">
+              We reach out to{" "}
               <span className="font-semibold text-black-600">
-                vulnerable girls, mothers, and victims of crisis
+                {" "}
+                girls and young mothers{" "}
               </span>{" "}
-              — including teenage pregnancy, child marriage,{" "}
+              who are alone, abandoned, and in desperate need of help and hope —
+              trapped by{" "}
               <span className="font-semibold text-black-600">
-                Gender-Based Violence (GBV)
+                {" "}
+                teenage pregnancy, forced child marriage, gender-based violence,
+                abuse, and HIV/AIDS{" "}
               </span>
-              , abuse, and HIV/AIDS.
+              .
             </p>
 
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-6">
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-6">
               We{" "}
               <span className="font-semibold text-black-600">
-                rehabilitate, rescue, empower
-              </span>
-              , and provide{" "}
+                rescue, rehabilitate, and empower,
+              </span>{" "}
+              offering{" "}
               <span className="font-semibold text-black-600">
-                skills training, counselling, and unconditional love.
+                hope,medical care, Vocational skills, healing, and unconditional
+                love.
               </span>
             </p>
 
