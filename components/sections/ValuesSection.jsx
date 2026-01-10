@@ -15,16 +15,28 @@ const ValuesSection = () => {
       image: "/images/love.png",
     },
     {
+      title: "Dignity & Respect",
+      description:
+        "Every individual deserves respect, honor, and the chance to reclaim their worth.",
+      image: "/images/butterfly.png",
+    },
+    {
+      title: "Empowerment",
+      description:
+        "We equip girls and women with the skills, confidence, and resources to rebuild their lives.",
+      image: "/images/butterfly.png",
+    },
+    {
+      title: "Hope & Transformation",
+      description:
+        "We believe in the potential for every life to heal, grow, and flourish despite adversity.",
+      image: "/images/butterfly.png",
+    },
+    {
       title: "Family",
       description:
         "We empower the family institution as the best place for children to flourish",
       image: "/images/bg-togetherness.png",
-    },
-    {
-      title: "Transformation",
-      description:
-        "We are committed to holistic restoration and transformation for our beneficiaries",
-      image: "/images/butterfly.png",
     },
   ];
 
@@ -85,7 +97,11 @@ const ValuesSection = () => {
     }
 
     // Flying animation for butterfly.png
-    if (currentValue === "Transformation") {
+    if (
+      currentValue === "Hope & Transformation" ||
+      currentValue === "Dignity & Respect" ||
+      currentValue === "Empowerment"
+    ) {
       return <AnimatedButterfly />;
     }
 
@@ -134,7 +150,7 @@ const ValuesSection = () => {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto"></div>
           <p className="section-subtitle text-primary font-bold text-2xl">
-            Love, Family, Transformation.
+            Love, Dignity & Respect, Empowerment, Hope & Transformation, Family.
           </p>
         </div>
 
