@@ -76,10 +76,10 @@ const ChallengeSection = () => {
                 }`}
               >
                 <div className="hexagon-content">
-                  <div className="text-sm md:text-3xl font-bold text-hotpink mb-1">
+                  <div className="text-sm md:text-5xl font-bold text-hotpink mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm md:text-lg text-center font-bold text-white">
+                  <div className="text-sm md:text-2xl text-center font-bold text-white">
                     {stat.label}
                   </div>
                 </div>
@@ -104,10 +104,10 @@ const ChallengeSection = () => {
                 }`}
               >
                 <div className="hexagon-content">
-                  <div className="text-sm md:text-3xl font-bold text-hotpink mb-1">
+                  <div className="text-sm md:text-5xl font-bold text-hotpink mb-1">
                     {stat.number}
                   </div>
-                  <div className="text-sm md:text-lg text-white font-bold text-center">
+                  <div className="text-sm md:text-2xl text-white font-bold text-center">
                     {stat.label}
                   </div>
                 </div>

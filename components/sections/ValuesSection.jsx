@@ -139,7 +139,7 @@ const ValuesSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-16 px-4">
+    <section className="relative min-h-screen flex items-center justify-center py-16 px-4" style={{backgroundColor: "ghostwhite"}}>
       {/* Background with subtle gradient and pattern */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-white to-secondary/50"></div>
       <div className="absolute inset-0 opacity-30"
