@@ -65,6 +65,10 @@ body {
   @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300;
 }
 
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full transition duration-300;
+}
+
 .card {
   @apply bg-white rounded-lg shadow-md overflow-hidden;
 }
