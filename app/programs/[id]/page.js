@@ -166,56 +166,42 @@ export default function ProgramDetailPage({ params }) {
               </div>
             </div>
 
-            {/* Gallery Section with Third Image */}
-            <div className="bg-gray-50 px-8 md:px-12 lg:px-16 py-12">
-              <h3 className="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
-                <span className="w-10 h-1 bg-primary rounded-full"></span>
-                Program Gallery
-              </h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                {/* Gallery Image 1 */}
-                <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3]">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${program.image})` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <p className="text-white font-semibold text-sm">
-                      Community Impact
-                    </p>
-                  </div>
-                </div>
-
-                {/* Gallery Image 2 */}
-                <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3]">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${program.image})` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <p className="text-white font-semibold text-sm">
-                      Empowerment in Action
-                    </p>
-                  </div>
-                </div>
-
-                {/* Gallery Image 3 */}
-                <div className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3]">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${program.image})` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <p className="text-white font-semibold text-sm">
-                      Building Futures
-                    </p>
-                  </div>
+            {/* Gallery Section */}
+            {program.gallery && program.gallery.length > 0 && (
+              <div className="bg-gray-50 px-8 md:px-12 lg:px-16 py-12">
+                <h3 className="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
+                  <span className="w-10 h-1 bg-primary rounded-full"></span>
+                  Program Gallery
+                </h3>
+                <div
+                  className={`grid gap-6 ${
+                    program.gallery.length === 1
+                      ? "md:grid-cols-1 max-w-md mx-auto"
+                      : program.gallery.length === 2
+                        ? "md:grid-cols-2 max-w-2xl mx-auto"
+                        : "md:grid-cols-3"
+                  }`}
+                >
+                  {program.gallery.map((item, index) => (
+                    <div
+                      key={index}
+                      className="group relative overflow-hidden rounded-xl shadow-lg aspect-[4/3]"
+                    >
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                        style={{ backgroundImage: `url(${item.image})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      {/* <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <p className="text-white font-semibold text-sm">
+                          {item.caption || `Gallery Image ${index + 1}`}
+                        </p>
+                      </div> */}
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Call to Action Section */}
             <div className="bg-gradient-to-r from-gray-900 to-gray-800 px-8 md:px-12 lg:px-16 py-12">
