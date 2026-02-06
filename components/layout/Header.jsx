@@ -154,48 +154,52 @@ const Header = () => {
                 <div className="w-20 h-1 bg-secondary mx-auto mt-2"></div>
               )}
             </Link>
-          </nav>
 
-          {/* <div className="hidden md:flex items-center space-x-4">
-            {status === "loading" ? (
-              <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
-            ) : session ? (
+            {/* Dashboard, Admin & Logout - Only visible when logged in */}
+            {status !== "loading" && session && (
               <>
                 <Link
                   href="/dashboard"
-                  className="text-gray-800 hover:text-primary font-medium transition duration-300"
+                  className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
                 >
                   Dashboard
+                  {isActive("/dashboard") && (
+                    <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+                  )}
                 </Link>
-                {session.user.isAdmin && (
+                {session.user?.isAdmin && (
                   <Link
                     href="/admin"
-                    className="text-gray-800 hover:text-primary font-medium transition duration-300"
+                    className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex flex-col items-center"
                   >
                     Admin
+                    {isActive("/admin") && (
+                      <div className="w-20 h-1 bg-primary mx-auto mt-2"></div>
+                    )}
                   </Link>
                 )}
                 <button
                   onClick={handleSignOut}
-                  className="text-gray-800 hover:text-primary font-medium transition duration-300"
+                  className="text-gray-800 hover:text-red-600 font-medium transition duration-300 flex items-center gap-2"
                 >
-                  Sign Out
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                  </svg>
+                  Logout
                 </button>
               </>
-            ) : (
-              <>
-                <Link
-                  href="/login"
-                  className="text-gray-800 hover:text-primary font-medium transition duration-300"
-                >
-                  Login
-                </Link>
-                <Link href="/register" className="btn-primary">
-                  Register
-                </Link>
-              </>
             )}
-          </div> */}
+          </nav>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -305,56 +309,55 @@ const Header = () => {
                 )}
               </Link>
 
-              {/* <div className="pt-4 border-t">
-                {status === "loading" ? (
-                  <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div>
-                ) : session ? (
-                  <>
-                    <Link
-                      href="/dashboard"
-                      className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Dashboard
-                    </Link>
-                    {session.user.isAdmin && (
-                      <Link
-                        href="/admin"
-                        className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        Admin
-                      </Link>
+              {/* Dashboard, Admin & Logout - Only visible when logged in */}
+              {status !== "loading" && session && (
+                <div className="pt-4 border-t space-y-4">
+                  <Link
+                    href="/dashboard"
+                    className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Dashboard
+                    {isActive("/dashboard") && (
+                      <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
                     )}
-                    <button
-                      onClick={() => {
-                        handleSignOut();
-                        setIsMenuOpen(false);
-                      }}
-                      className="block text-gray-800 hover:text-primary font-medium transition duration-300"
-                    >
-                      Sign Out
-                    </button>
-                  </>
-                ) : (
-                  <>
+                  </Link>
+                  {session.user?.isAdmin && (
                     <Link
-                      href="/login"
-                      className="block text-gray-800 hover:text-primary font-medium mb-2 transition duration-300"
+                      href="/admin"
+                      className="text-gray-800 hover:text-primary font-medium transition duration-300 relative flex items-center"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Login
+                      Admin
+                      {isActive("/admin") && (
+                        <div className="w-20 h-1 bg-primary mx-auto ml-auto"></div>
+                      )}
                     </Link>
-                    <Link
-                      href="/register"
-                      className="inline-block btn-primary"
-                      onClick={() => setIsMenuOpen(false)}
+                  )}
+                  <button
+                    onClick={() => {
+                      handleSignOut();
+                      setIsMenuOpen(false);
+                    }}
+                    className="flex items-center gap-2 text-gray-800 hover:text-red-600 font-medium transition duration-300"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      Register
-                    </Link>
-                  </>
-                )}
-              </div> */}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                      />
+                    </svg>
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}

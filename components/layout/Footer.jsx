@@ -76,6 +76,14 @@ const Footer = () => {
                   Donate
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/login"
+                  className="text-gray-400 hover:text-white transition duration-300"
+                >
+                  Login
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -84,52 +92,6 @@ const Footer = () => {
             <address className="not-italic text-gray-400">
               <p className="mb-4">Email: thefortresswop2019@gmail.com</p>
               <p className="mb-4">Phone: +256 772 97403</p>
-
-              {/* <form
-                action="mailto:willis988@gmail.com"
-                method="post"
-                encType="text/plain"
-                className="mt-6 space-y-4"
-              >
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium mb-1"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white"
-                    placeholder="Enter subject"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-1"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="body"
-                    rows="4"
-                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white"
-                    placeholder="Enter your message"
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
-                >
-                  Send Message
-                </button>
-              </form> */}
             </address>
           </div>
         </div>
