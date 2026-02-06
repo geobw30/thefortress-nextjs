@@ -109,7 +109,7 @@ export async function PUT(request) {
   try {
     const session = await getServerSession(authOptions);
 
-    if (!session || !session.user.isAdmin) {
+    if (!session) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: 401,
         headers: { "Content-Type": "application/json" },
@@ -121,14 +121,10 @@ export async function PUT(request) {
     const body = await request.json();
     const { id, name, email, isAdmin, password } = body;
 
-    if (!id) {
-      return new Response(JSON.stringify({ error: "User ID is required" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
+    // If no id provided, use current user's id
+    const targetId = id || session.user.id;
 
-    const user = await User.findById(id);
+    const user = await User.findById(targetId);
 
     if (!user) {
       return new Response(JSON.stringify({ error: "User not found" }), {
@@ -137,33 +133,61 @@ export async function PUT(request) {
       });
     }
 
-    // Prevent removing the last admin
-    if (user.isAdmin && isAdmin === false) {
-      const adminCount = await User.countDocuments({ isAdmin: true });
-      if (adminCount <= 1) {
-        return new Response(
-          JSON.stringify({ error: "Cannot remove the last admin" }),
-          { status: 400, headers: { "Content-Type": "application/json" } },
-        );
-      }
+    // Check if user is updating their own profile or is admin
+    const isOwnProfile = targetId === session.user.id;
+    if (!isOwnProfile && !session.user.isAdmin) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
-    // Update fields
-    if (name) user.name = name;
-    if (email) {
-      // Check if email is taken by another user
-      const existingUser = await User.findOne({ email, _id: { $ne: id } });
-      if (existingUser) {
-        return new Response(
-          JSON.stringify({ error: "Email already registered" }),
-          { status: 400, headers: { "Content-Type": "application/json" } },
-        );
+    // Non-admin users can only update their own name, email, and password
+    if (!session.user.isAdmin) {
+      if (name) user.name = name;
+      if (email) {
+        // Check if email is taken by another user
+        const existingUser = await User.findOne({ email, _id: { $ne: targetId } });
+        if (existingUser) {
+          return new Response(
+            JSON.stringify({ error: "Email already registered" }),
+            { status: 400, headers: { "Content-Type": "application/json" } },
+          );
+        }
+        user.email = email;
       }
-      user.email = email;
-    }
-    if (isAdmin !== undefined) user.isAdmin = isAdmin;
-    if (password) {
-      user.password = await bcrypt.hash(password, 10);
+      if (password) {
+        user.password = await bcrypt.hash(password, 10);
+      }
+    } else {
+      // Admin can update all fields
+      // Prevent removing the last admin
+      if (user.isAdmin && isAdmin === false) {
+        const adminCount = await User.countDocuments({ isAdmin: true });
+        if (adminCount <= 1) {
+          return new Response(
+            JSON.stringify({ error: "Cannot remove the last admin" }),
+            { status: 400, headers: { "Content-Type": "application/json" } },
+          );
+        }
+      }
+
+      if (name) user.name = name;
+      if (email) {
+        // Check if email is taken by another user
+        const existingUser = await User.findOne({ email, _id: { $ne: targetId } });
+        if (existingUser) {
+          return new Response(
+            JSON.stringify({ error: "Email already registered" }),
+            { status: 400, headers: { "Content-Type": "application/json" } },
+          );
+        }
+        user.email = email;
+      }
+      if (isAdmin !== undefined) user.isAdmin = isAdmin;
+      if (password) {
+        user.password = await bcrypt.hash(password, 10);
+      }
     }
 
     await user.save();

@@ -32,6 +32,22 @@ const DashboardPage = () => {
   const [editStoryContent, setEditStoryContent] = useState("");
   const [savingStory, setSavingStory] = useState(false);
 
+  // Profile form state
+  const [profileName, setProfileName] = useState("");
+  const [profileEmail, setProfileEmail] = useState("");
+  const [profilePassword, setProfilePassword] = useState("");
+  const [profileConfirmPassword, setProfileConfirmPassword] = useState("");
+  const [savingProfile, setSavingProfile] = useState(false);
+  const [profileMessage, setProfileMessage] = useState(null);
+
+  // Initialize profile form with session data
+  useEffect(() => {
+    if (session?.user) {
+      setProfileName(session.user.name || "");
+      setProfileEmail(session.user.email || "");
+    }
+  }, [session]);
+
   // Redirect if not authenticated
   useEffect(() => {
     if (status === "loading") return;
@@ -146,8 +162,8 @@ const DashboardPage = () => {
           prev.map((story) =>
             story._id === editingStory._id
               ? { ...story, title: editStoryTitle, content: editStoryContent }
-              : story
-          )
+              : story,
+          ),
         );
         setShowStoryEditModal(false);
         setEditingStory(null);
@@ -159,6 +175,55 @@ const DashboardPage = () => {
       alert("Failed to update story");
     } finally {
       setSavingStory(false);
+    }
+  };
+
+  // Update profile
+  const updateProfile = async (e) => {
+    e.preventDefault();
+    setProfileMessage(null);
+
+    // Validate passwords match if provided
+    if (profilePassword && profilePassword !== profileConfirmPassword) {
+      setProfileMessage({ type: "error", text: "Passwords do not match" });
+      return;
+    }
+
+    setSavingProfile(true);
+
+    try {
+      const res = await fetch("/api/users", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: profileName,
+          email: profileEmail,
+          password: profilePassword || undefined,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setProfileMessage({
+          type: "success",
+          text: "Profile updated successfully!",
+        });
+        setProfilePassword("");
+        setProfileConfirmPassword("");
+      } else {
+        setProfileMessage({
+          type: "error",
+          text: data.error || "Failed to update profile",
+        });
+      }
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+      setProfileMessage({ type: "error", text: "Failed to update profile" });
+    } finally {
+      setSavingProfile(false);
     }
   };
 
@@ -599,7 +664,9 @@ const DashboardPage = () => {
                               disabled={deletingStory === story._id}
                               className="text-red-600 hover:underline disabled:opacity-50"
                             >
-                              {deletingStory === story._id ? "Deleting..." : "Delete"}
+                              {deletingStory === story._id
+                                ? "Deleting..."
+                                : "Delete"}
                             </button>
                           </td>
                         </tr>
@@ -678,13 +745,27 @@ const DashboardPage = () => {
                 Update your profile information.
               </p>
 
-              <form className="space-y-6">
+              {profileMessage && (
+                <div
+                  className={`mb-6 p-4 rounded-lg ${
+                    profileMessage.type === "success"
+                      ? "bg-green-50 text-green-800"
+                      : "bg-red-50 text-red-800"
+                  }`}
+                >
+                  {profileMessage.text}
+                </div>
+              )}
+
+              <form onSubmit={updateProfile} className="space-y-6">
                 <div>
                   <label className="form-label">Full Name</label>
                   <input
                     type="text"
-                    defaultValue={session?.user?.name}
+                    value={profileName}
+                    onChange={(e) => setProfileName(e.target.value)}
                     className="form-input"
+                    required
                   />
                 </div>
 
@@ -692,8 +773,10 @@ const DashboardPage = () => {
                   <label className="form-label">Email Address</label>
                   <input
                     type="email"
-                    defaultValue={session?.user?.email}
+                    value={profileEmail}
+                    onChange={(e) => setProfileEmail(e.target.value)}
                     className="form-input"
+                    required
                   />
                 </div>
 
@@ -701,6 +784,8 @@ const DashboardPage = () => {
                   <label className="form-label">Password</label>
                   <input
                     type="password"
+                    value={profilePassword}
+                    onChange={(e) => setProfilePassword(e.target.value)}
                     placeholder="Leave blank to keep current password"
                     className="form-input"
                   />
@@ -710,14 +795,20 @@ const DashboardPage = () => {
                   <label className="form-label">Confirm Password</label>
                   <input
                     type="password"
+                    value={profileConfirmPassword}
+                    onChange={(e) => setProfileConfirmPassword(e.target.value)}
                     placeholder="Leave blank to keep current password"
                     className="form-input"
                   />
                 </div>
 
                 <div className="flex justify-end">
-                  <button type="submit" className="btn-primary">
-                    Update Profile
+                  <button
+                    type="submit"
+                    disabled={savingProfile}
+                    className="btn-primary disabled:opacity-50"
+                  >
+                    {savingProfile ? "Saving..." : "Update Profile"}
                   </button>
                 </div>
               </form>
