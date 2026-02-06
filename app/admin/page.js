@@ -52,6 +52,25 @@ const AdminDashboard = () => {
     userId: null,
   });
 
+  // Gallery state
+  const [gallery, setGallery] = useState([]);
+  const [galleryLoading, setGalleryLoading] = useState(false);
+  const [showGalleryModal, setShowGalleryModal] = useState(false);
+  const [editingGallery, setEditingGallery] = useState(null);
+  const [galleryForm, setGalleryForm] = useState({
+    title: "",
+    description: "",
+    imageUrl: "",
+  });
+  const [galleryError, setGalleryError] = useState("");
+  const [gallerySuccess, setGallerySuccess] = useState("");
+  const [galleryUploading, setGalleryUploading] = useState(false);
+  const [galleryImageFile, setGalleryImageFile] = useState(null);
+  const [deleteGalleryConfirm, setDeleteGalleryConfirm] = useState({
+    show: false,
+    galleryId: null,
+  });
+
   // Redirect if not authenticated or not admin
   useEffect(() => {
     if (status === "loading") return;
@@ -86,6 +105,11 @@ const AdminDashboard = () => {
     } finally {
       setLoading(false);
     }
+
+    // Also fetch recent items for overview
+    fetchUsers();
+    fetchGallery();
+    fetchStories();
   };
 
   // Fetch stories
@@ -335,6 +359,168 @@ const AdminDashboard = () => {
     }
   };
 
+  // Fetch gallery
+  const fetchGallery = async () => {
+    setGalleryLoading(true);
+    try {
+      const res = await fetch("/api/gallery");
+      const data = await res.json();
+      if (data.images) {
+        setGallery(data.images);
+      }
+    } catch (error) {
+      console.error("Failed to fetch gallery:", error);
+    } finally {
+      setGalleryLoading(false);
+    }
+  };
+
+  // Fetch gallery when gallery tab is active
+  useEffect(() => {
+    if (activeTab === "gallery" && gallery.length === 0) {
+      fetchGallery();
+    }
+  }, [activeTab]);
+
+  // Reset gallery form
+  const resetGalleryForm = () => {
+    setGalleryForm({
+      title: "",
+      description: "",
+      imageUrl: "",
+    });
+    setGalleryImageFile(null);
+    setEditingGallery(null);
+    setGalleryError("");
+    setGallerySuccess("");
+  };
+
+  // Handle image file change
+  const handleGalleryImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setGalleryImageFile(e.target.files[0]);
+      // Create a local preview URL
+      const file = e.target.files[0];
+      const objectUrl = URL.createObjectURL(file);
+      setGalleryForm({ ...galleryForm, imageUrl: objectUrl });
+    }
+  };
+
+  // Open modal for creating new gallery image
+  const handleCreateGallery = () => {
+    resetGalleryForm();
+    setShowGalleryModal(true);
+  };
+
+  // Open modal for editing gallery image
+  const handleEditGallery = (item) => {
+    setGalleryForm({
+      title: item.title,
+      description: item.description || "",
+      imageUrl: item.imageUrl,
+    });
+    setEditingGallery(item);
+    setShowGalleryModal(true);
+  };
+
+  // Submit gallery form (create or update)
+  const handleGallerySubmit = async (e) => {
+    e.preventDefault();
+    setGalleryError("");
+    setGallerySuccess("");
+    setGalleryUploading(true);
+
+    try {
+      // For new uploads with a file, use the upload API with FormData
+      if (!editingGallery && galleryImageFile) {
+        const formData = new FormData();
+        formData.append("title", galleryForm.title);
+        formData.append("description", galleryForm.description);
+        formData.append("image", galleryImageFile);
+
+        const res = await fetch("/api/gallery/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || "Failed to upload image");
+        }
+
+        setGallerySuccess("Gallery image uploaded successfully!");
+        fetchGallery();
+        fetchStats();
+
+        // Close modal after short delay
+        setTimeout(() => {
+          setShowGalleryModal(false);
+          resetGalleryForm();
+        }, 1500);
+      } else {
+        // For editing existing images or URL-based uploads
+        const url = "/api/gallery";
+        const method = editingGallery ? "PUT" : "POST";
+        const body = editingGallery
+          ? { ...galleryForm, id: editingGallery._id }
+          : galleryForm;
+
+        const res = await fetch(url, {
+          method,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || "Failed to save gallery image");
+        }
+
+        setGallerySuccess(
+          editingGallery
+            ? "Gallery image updated successfully!"
+            : "Gallery image uploaded successfully!",
+        );
+        fetchGallery();
+        fetchStats();
+
+        // Close modal after short delay
+        setTimeout(() => {
+          setShowGalleryModal(false);
+          resetGalleryForm();
+        }, 1500);
+      }
+    } catch (error) {
+      setGalleryError(error.message);
+    } finally {
+      setGalleryUploading(false);
+    }
+  };
+
+  // Delete gallery image
+  const handleDeleteGallery = async (galleryId) => {
+    try {
+      const res = await fetch(`/api/gallery?id=${galleryId}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to delete gallery image");
+      }
+
+      fetchGallery();
+      fetchStats();
+      setDeleteGalleryConfirm({ show: false, galleryId: null });
+    } catch (error) {
+      console.error("Delete gallery error:", error);
+      alert(error.message);
+    }
+  };
+
   if (status === "loading") {
     return (
       <div className="min-h-screen bg-secondary flex items-center justify-center">
@@ -525,17 +711,65 @@ const AdminDashboard = () => {
                   </h3>
                   <ul className="space-y-2">
                     <li>
-                      <button className="text-primary hover:underline">
+                      <button
+                        onClick={() => setActiveTab("users")}
+                        className="text-primary hover:underline flex items-center gap-2"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                          />
+                        </svg>
                         Add New User
                       </button>
                     </li>
                     <li>
-                      <button className="text-primary hover:underline">
+                      <button
+                        onClick={() => setActiveTab("gallery")}
+                        className="text-primary hover:underline flex items-center gap-2"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l4.586-4.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
                         Upload Gallery Image
                       </button>
                     </li>
                     <li>
-                      <button className="text-primary hover:underline">
+                      <button
+                        onClick={() => setActiveTab("stories")}
+                        className="text-primary hover:underline flex items-center gap-2"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                          />
+                        </svg>
                         Create New Story
                       </button>
                     </li>
@@ -545,17 +779,52 @@ const AdminDashboard = () => {
                   <h3 className="font-semibold text-gray-900 mb-2">
                     Recent Activity
                   </h3>
-                  <ul className="space-y-2 text-sm">
-                    <li className="text-gray-600">
-                      New user registered: John Doe
-                    </li>
-                    <li className="text-gray-600">
-                      Gallery image uploaded: Community Event
-                    </li>
-                    <li className="text-gray-600">
-                      Story published: Education Impact
-                    </li>
-                  </ul>
+                  {users.length > 0 ||
+                  gallery.length > 0 ||
+                  stories.length > 0 ? (
+                    <ul className="space-y-2 text-sm">
+                      {users.slice(0, 2).map((user) => (
+                        <li
+                          key={user._id}
+                          className="text-gray-600 flex items-center gap-2"
+                        >
+                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                          New user: {user.name}
+                        </li>
+                      ))}
+                      {gallery.slice(0, 2).map((item) => (
+                        <li
+                          key={item._id}
+                          className="text-gray-600 flex items-center gap-2"
+                        >
+                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                          Gallery: {item.title}
+                        </li>
+                      ))}
+                      {stories.slice(0, 2).map((story) => (
+                        <li
+                          key={story._id}
+                          className="text-gray-600 flex items-center gap-2"
+                        >
+                          <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                          Story: {story.title}
+                        </li>
+                      ))}
+                      {users.length === 0 &&
+                        gallery.length === 0 &&
+                        stories.length === 0 && (
+                          <li className="text-gray-500 italic">
+                            No recent activity
+                          </li>
+                        )}
+                    </ul>
+                  ) : (
+                    <ul className="space-y-2 text-sm">
+                      <li className="text-gray-500 italic">
+                        No recent activity
+                      </li>
+                    </ul>
+                  )}
                 </div>
               </div>
             </div>
@@ -725,40 +994,158 @@ const AdminDashboard = () => {
 
           {activeTab === "gallery" && (
             <div className="fade-in">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Gallery Management
-              </h2>
-              <p className="text-gray-600 mb-4">
-                Manage gallery images uploaded by users.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[1, 2, 3, 4, 5, 6].map((item) => (
-                  <div key={item} className="card overflow-hidden">
-                    <div className="bg-secondary border-2 border-dashed w-full h-48 flex items-center justify-center">
-                      <span className="text-gray-500">Gallery Image</span>
-                    </div>
-                    <div className="p-4">
-                      <h3 className="font-medium text-gray-900">
-                        Image Title {item}
-                      </h3>
-                      <p className="text-sm text-gray-500">
-                        Uploaded by User {item}
-                      </p>
-                      <div className="mt-2 flex space-x-2">
-                        <button className="text-primary text-sm hover:underline">
-                          Edit
-                        </button>
-                        <button className="text-red-600 text-sm hover:underline">
-                          Delete
-                        </button>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">
+                    Gallery Management
+                  </h2>
+                  <p className="text-gray-600">
+                    Manage gallery images uploaded by users.
+                  </p>
+                </div>
+                <button
+                  onClick={handleCreateGallery}
+                  className="btn-primary flex items-center gap-2"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                  Upload Image
+                </button>
+              </div>
+
+              {galleryLoading ? (
+                <div className="flex justify-center py-12">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                </div>
+              ) : gallery.length === 0 ? (
+                <div className="text-center py-12 bg-gray-50 rounded-lg">
+                  <svg
+                    className="w-12 h-12 text-gray-400 mx-auto mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l4.586-4.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <p className="text-gray-500 mb-4">No gallery images found</p>
+                  <button
+                    onClick={handleCreateGallery}
+                    className="text-primary hover:underline"
+                  >
+                    Upload your first image
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {gallery.map((item) => (
+                    <div key={item._id} className="card overflow-hidden group">
+                      <div className="relative aspect-[4/3] bg-gray-100">
+                        {item.imageUrl ? (
+                          <img
+                            src={item.imageUrl}
+                            alt={item.title}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <svg
+                              className="w-12 h-12 text-gray-400"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l4.586-4.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                          </div>
+                        )}
+                        {/* Overlay with actions */}
+                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                          <button
+                            onClick={() => handleEditGallery(item)}
+                            className="bg-white p-2 rounded-full hover:bg-gray-100 transition-colors"
+                            title="Edit"
+                          >
+                            <svg
+                              className="w-5 h-5 text-gray-700"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                              />
+                            </svg>
+                          </button>
+                          <button
+                            onClick={() =>
+                              setDeleteGalleryConfirm({
+                                show: true,
+                                galleryId: item._id,
+                              })
+                            }
+                            className="bg-white p-2 rounded-full hover:bg-red-50 transition-colors"
+                            title="Delete"
+                          >
+                            <svg
+                              className="w-5 h-5 text-red-600"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="font-medium text-gray-900 truncate">
+                          {item.title}
+                        </h3>
+                        {item.description && (
+                          <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                            {item.description}
+                          </p>
+                        )}
+                        <p className="text-xs text-gray-400 mt-2">
+                          {item.uploadedBy?.name
+                            ? `Uploaded by ${item.uploadedBy.name}`
+                            : "Unknown"}{" "}
+                          • {formatDate(item.createdAt)}
+                        </p>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4">
-                <button className="btn-primary">View All Gallery Images</button>
-              </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
@@ -1194,6 +1581,179 @@ const AdminDashboard = () => {
         onConfirm={() => handleDeleteUser(deleteUserConfirm.userId)}
         title="Delete User"
         message="Are you sure you want to delete this user? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+        confirmStyle="danger"
+      />
+
+      {/* Gallery Modal */}
+      {showGalleryModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+            <div
+              className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+              onClick={() => setShowGalleryModal(false)}
+            ></div>
+
+            <div className="relative inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-xl font-bold text-gray-900">
+                  {editingGallery
+                    ? "Edit Gallery Image"
+                    : "Upload Gallery Image"}
+                </h3>
+                <button
+                  onClick={() => setShowGalleryModal(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {galleryError && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+                  {galleryError}
+                </div>
+              )}
+
+              {gallerySuccess && (
+                <div className="mb-4 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                  {gallerySuccess}
+                </div>
+              )}
+
+              <form onSubmit={handleGallerySubmit} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Image Title *
+                  </label>
+                  <input
+                    type="text"
+                    value={galleryForm.title}
+                    onChange={(e) =>
+                      setGalleryForm({ ...galleryForm, title: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Enter image title"
+                    required
+                  />
+                </div>
+
+                {!editingGallery ? (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Image File *
+                    </label>
+                    <input
+                      type="file"
+                      onChange={handleGalleryImageChange}
+                      accept="image/*"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      required={!editingGallery}
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Image URL (for editing)
+                    </label>
+                    <input
+                      type="url"
+                      value={galleryForm.imageUrl}
+                      onChange={(e) =>
+                        setGalleryForm({
+                          ...galleryForm,
+                          imageUrl: e.target.value,
+                        })
+                      }
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      placeholder="https://example.com/image.jpg"
+                    />
+                  </div>
+                )}
+
+                {galleryForm.imageUrl && (
+                  <div className="relative">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Preview
+                    </label>
+                    <img
+                      src={galleryForm.imageUrl}
+                      alt="Preview"
+                      className="w-full h-48 object-cover rounded-lg"
+                      onError={(e) => {
+                        e.target.src =
+                          "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect fill='%23f3f4f6' width='200' height='200'/%3E%3Ctext fill='%239ca3af' font-family='sans-serif' font-size='14' x='50%25' y='50%25' text-anchor='middle'%3EImage not available%3C/text%3E%3C/svg%3E";
+                      }}
+                    />
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Description (optional)
+                  </label>
+                  <textarea
+                    value={galleryForm.description}
+                    onChange={(e) =>
+                      setGalleryForm({
+                        ...galleryForm,
+                        description: e.target.value,
+                      })
+                    }
+                    rows={3}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                    placeholder="Enter a description for this image"
+                  />
+                </div>
+
+                <div className="flex justify-end gap-3 pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowGalleryModal(false)}
+                    className="px-4 py-2 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={galleryUploading}
+                    className="btn-primary disabled:opacity-50"
+                  >
+                    {galleryUploading
+                      ? "Uploading..."
+                      : editingGallery
+                        ? "Update Image"
+                        : "Upload Image"}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Gallery Confirmation Dialog */}
+      <ConfirmationDialog
+        isOpen={deleteGalleryConfirm.show}
+        onClose={() =>
+          setDeleteGalleryConfirm({ show: false, galleryId: null })
+        }
+        onConfirm={() => handleDeleteGallery(deleteGalleryConfirm.galleryId)}
+        title="Delete Gallery Image"
+        message="Are you sure you want to delete this image? This action cannot be undone."
         confirmText="Delete"
         cancelText="Cancel"
         confirmStyle="danger"
