@@ -5,6 +5,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import ConfirmationDialog from "@/components/ConfirmationDialog";
 
+// Add this line to force dynamic rendering
+export const dynamic = "force-dynamic";
+
 const AdminDashboard = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -541,7 +544,7 @@ const AdminDashboard = () => {
       {/* Header */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4 md:mb-0">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4 md:mb-0 mt-10">
             Admin Dashboard
           </h1>
           <div className="flex items-center space-x-4">
