@@ -7,6 +7,7 @@ import MainContentWrapper from "../components/layout/MainContentWrapper";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,7 @@ export default async function RootLayout({ children }) {
               <MainContentWrapper>
                 {children}
                 <SpeedInsights />
+                <Analytics />
               </MainContentWrapper>
             </main>
             <Footer />
