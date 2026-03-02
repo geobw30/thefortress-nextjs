@@ -91,7 +91,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <address className="not-italic text-gray-400">
               <p className="mb-4">Email: thefortresswop2019@gmail.com</p>
-              <p className="mb-4">Phone: +256 772 97403</p>
+              <p className="mb-4">Phone: +256 772 907403</p>
             </address>
           </div>
         </div>

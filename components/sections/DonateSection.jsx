@@ -150,7 +150,7 @@ const DonateSection = () => {
                 </h4>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="https://www.paypal.com/paypalme/TheFortressUg"
+                    href="https://paypal.me/WOPIFortress"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 transition-shadow duration-300 hover:shadow-lg"
