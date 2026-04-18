@@ -29,6 +29,7 @@ const AdminDashboard = () => {
     content: "",
     author: "",
     imageUrl: "",
+    videoUrl: "",
   });
   const [storyError, setStoryError] = useState("");
   const [storySuccess, setStorySuccess] = useState("");
@@ -145,6 +146,7 @@ const AdminDashboard = () => {
       content: "",
       author: "",
       imageUrl: "",
+      videoUrl: "",
     });
     setEditingStory(null);
     setStoryError("");
@@ -164,6 +166,7 @@ const AdminDashboard = () => {
       content: story.content,
       author: story.author,
       imageUrl: story.imageUrl || "",
+      videoUrl: story.videoUrl || "",
     });
     setEditingStory(story);
     setShowStoryModal(true);
@@ -1391,6 +1394,24 @@ const AdminDashboard = () => {
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                     placeholder="https://example.com/image.jpg"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    YouTube Video URL (optional)
+                  </label>
+                  <input
+                    type="url"
+                    value={storyForm.videoUrl}
+                    onChange={(e) =>
+                      setStoryForm({ ...storyForm, videoUrl: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="https://www.youtube.com/watch?v=..."
+                  />
+                  <p className="mt-1 text-sm text-gray-500">
+                    Enter the full YouTube URL (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+                  </p>
                 </div>
 
                 <div>

@@ -13,6 +13,10 @@ const storySchema = new mongoose.Schema({
     type: String,
     required: false,
   },
+  videoUrl: {
+    type: String,
+    required: false,
+  },
   author: {
     type: String,
     required: true,

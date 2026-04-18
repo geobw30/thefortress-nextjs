@@ -31,6 +31,7 @@ export async function POST(request) {
     const title = formData.get('title')
     const content = formData.get('content')
     const imageFile = formData.get('image')
+    const videoUrl = formData.get('videoUrl')
 
     // Validate input
     if (!title || !content) {
@@ -71,6 +72,7 @@ export async function POST(request) {
       title,
       content,
       imageUrl,
+      videoUrl: videoUrl || null,
       author: session.user.name,
       uploadedBy: session.user.id,
     })

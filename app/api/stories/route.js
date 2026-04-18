@@ -49,7 +49,7 @@ export async function POST(request) {
     await connectDB()
 
     const body = await request.json()
-    const { title, content, author, imageUrl } = body
+    const { title, content, author, imageUrl, videoUrl } = body
 
     if (!title || !content || !author) {
       return new Response(
@@ -63,6 +63,7 @@ export async function POST(request) {
       content,
       author,
       imageUrl: imageUrl || '',
+      videoUrl: videoUrl || '',
       uploadedBy: session.user.id,
     })
 
@@ -96,7 +97,7 @@ export async function PUT(request) {
     await connectDB()
 
     const body = await request.json()
-    const { id, title, content, author, imageUrl } = body
+    const { id, title, content, author, imageUrl, videoUrl } = body
 
     if (!id) {
       return new Response(
@@ -127,6 +128,7 @@ export async function PUT(request) {
     if (content) story.content = content
     if (author) story.author = author
     if (imageUrl !== undefined) story.imageUrl = imageUrl
+    if (videoUrl !== undefined) story.videoUrl = videoUrl
 
     await story.save()
 

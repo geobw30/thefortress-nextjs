@@ -11,6 +11,7 @@ const StoriesPage = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const [videoUrl, setVideoUrl] = useState("");
   const [uploading, setUploading] = useState(false);
   const [expandedStory, setExpandedStory] = useState(null);
   const { data: session, status } = useSession();
@@ -44,6 +45,24 @@ const StoriesPage = () => {
     }
   };
 
+  // Extract YouTube video ID from URL
+  const extractYouTubeId = (url) => {
+    if (!url) return null;
+    // Handle embed URLs: https://www.youtube.com/embed/ID
+    let embedMatch = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/);
+    if (embedMatch) return embedMatch[1];
+    
+    // Handle standard watch URLs: https://www.youtube.com/watch?v=ID
+    let watchMatch = url.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/);
+    if (watchMatch) return watchMatch[1];
+    
+    // Handle short URLs: https://youtu.be/ID
+    let shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+    if (shortMatch) return shortMatch[1];
+    
+    return null;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUploading(true);
@@ -55,6 +74,9 @@ const StoriesPage = () => {
       formData.append("content", content);
       if (imageFile) {
         formData.append("image", imageFile);
+      }
+      if (videoUrl) {
+        formData.append("videoUrl", videoUrl);
       }
 
       const response = await fetch("/api/stories/upload", {
@@ -71,6 +93,7 @@ const StoriesPage = () => {
         setTitle("");
         setContent("");
         setImageFile(null);
+        setVideoUrl("");
         setShowUploadForm(false);
       } else {
         setError(data.error || "Upload failed");
@@ -162,6 +185,20 @@ const StoriesPage = () => {
                 />
               </div>
 
+              <div>
+                <label className="form-label">YouTube Video URL (Optional)</label>
+                <input
+                  type="url"
+                  value={videoUrl}
+                  onChange={(e) => setVideoUrl(e.target.value)}
+                  className="form-input"
+                  placeholder="https://www.youtube.com/watch?v=..."
+                />
+                <p className="mt-1 text-sm text-gray-500">
+                  Paste any YouTube URL format: watch URL, short URL, or embed URL
+                </p>
+              </div>
+
               <div className="flex justify-end space-x-3">
                 <button
                   type="button"
@@ -206,6 +243,21 @@ const StoriesPage = () => {
                   }}
                 />
               )}
+
+              {story.videoUrl && (
+                <div className="w-full bg-black" style={{ maxHeight: "400px", overflow: "hidden" }}>
+                  <iframe
+                    width="100%"
+                    height="400"
+                    src={`https://www.youtube.com/embed/${extractYouTubeId(story.videoUrl)}`}
+                    title={story.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{ display: "block" }}
+                  ></iframe>
+                </div>
+              )}
               <div className="p-6">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-2">
                   {story.title}
@@ -220,7 +272,7 @@ const StoriesPage = () => {
                 </p>
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-gray-700 font-medium">{story.author}</p>
+                    {/* <p className="text-gray-700 font-medium">{story.author}</p> */}
                     <p className="text-gray-500 text-sm">
                       {new Date(story.createdAt).toLocaleDateString()}
                     </p>
