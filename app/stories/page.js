@@ -51,15 +51,15 @@ const StoriesPage = () => {
     // Handle embed URLs: https://www.youtube.com/embed/ID
     let embedMatch = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/);
     if (embedMatch) return embedMatch[1];
-    
+
     // Handle standard watch URLs: https://www.youtube.com/watch?v=ID
     let watchMatch = url.match(/youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)/);
     if (watchMatch) return watchMatch[1];
-    
+
     // Handle short URLs: https://youtu.be/ID
     let shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
     if (shortMatch) return shortMatch[1];
-    
+
     return null;
   };
 
@@ -186,7 +186,9 @@ const StoriesPage = () => {
               </div>
 
               <div>
-                <label className="form-label">YouTube Video URL (Optional)</label>
+                <label className="form-label">
+                  YouTube Video URL (Optional)
+                </label>
                 <input
                   type="url"
                   value={videoUrl}
@@ -195,7 +197,8 @@ const StoriesPage = () => {
                   placeholder="https://www.youtube.com/watch?v=..."
                 />
                 <p className="mt-1 text-sm text-gray-500">
-                  Paste any YouTube URL format: watch URL, short URL, or embed URL
+                  Paste any YouTube URL format: watch URL, short URL, or embed
+                  URL
                 </p>
               </div>
 
@@ -236,7 +239,7 @@ const StoriesPage = () => {
                 <img
                   src={story.imageUrl}
                   alt={story.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-90 object-cover"
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = "/images/placeholder.jpg";
@@ -245,7 +248,10 @@ const StoriesPage = () => {
               )}
 
               {story.videoUrl && (
-                <div className="w-full bg-black" style={{ maxHeight: "400px", overflow: "hidden" }}>
+                <div
+                  className="w-full bg-black"
+                  style={{ maxHeight: "400px", overflow: "hidden" }}
+                >
                   <iframe
                     width="100%"
                     height="400"
