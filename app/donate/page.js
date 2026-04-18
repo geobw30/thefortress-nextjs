@@ -2,10 +2,30 @@ import React from "react";
 
 const DonatePage = () => {
   const donationOptions = [
-    { amount: "$30", description: "Buys a Mother and Baby Value Kit" },
-    { amount: "$50", description: "" },
-    { amount: "$100", description: "" },
-    { amount: "$150", description: "" },
+    {
+      amount: "$10",
+      description:
+        "Pays for a re-usable dignity kit to keep a girl in school, $50 for 5 girls.",
+    },
+    {
+      amount: "$35",
+      description:
+        "Buys a Mama and Baby kit for safe child birth, saves 2 lives.",
+    },
+    {
+      amount: "$50",
+      description:
+        "Sponsors a girl/young mother for vocational skills training and materials.",
+    },
+    {
+      amount: "$100 or more",
+      description: "Sponsors a young mother in high school or medical school",
+    },
+    {
+      amount: "$2000",
+      description:
+        "Buys an acre of farm land for the Fortress income generating project.",
+    },
   ];
 
   return (
@@ -169,14 +189,19 @@ const DonatePage = () => {
                       className="border-2 border-primary text-primary hover:bg-primary font-semibold py-4 rounded-lg transition duration-300"
                     >
                       <div className="font-bold text-lg">{option.amount}</div>
-                      <div className="text-sm">{option.description}</div>
+                      <div
+                        className="text-sm"
+                        style={{ color: "darkslateblue" }}
+                      >
+                        {option.description}
+                      </div>
                     </button>
                   ))}
                 </div>
               </div>
 
               <div className="mb-6">
-                <h4 className="text-lg font-medium text-gray-700 mb-3">
+                <h4 className="text-2xl font-medium text-gray-700 mb-3">
                   Donate Through:
                 </h4>
                 <div className="flex flex-col sm:flex-row gap-4">

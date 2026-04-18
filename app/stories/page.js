@@ -13,7 +13,7 @@ const StoriesPage = () => {
   const [imageFile, setImageFile] = useState(null);
   const [videoUrl, setVideoUrl] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [expandedStory, setExpandedStory] = useState(null);
+  const [selectedStory, setSelectedStory] = useState(null);
   const { data: session, status } = useSession();
 
   // Fetch stories
@@ -105,6 +105,32 @@ const StoriesPage = () => {
       setUploading(false);
     }
   };
+
+  const openStoryModal = (story) => {
+    setSelectedStory(story);
+  };
+
+  const closeStoryModal = () => {
+    setSelectedStory(null);
+  };
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        closeStoryModal();
+      }
+    };
+
+    if (selectedStory) {
+      document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", handleEscape);
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [selectedStory]);
 
   if (loading) {
     return (
@@ -268,13 +294,9 @@ const StoriesPage = () => {
                 <h2 className="text-2xl font-semibold text-gray-800 mb-2">
                   {story.title}
                 </h2>
-                <p className="text-gray-600 mb-4">
-                  {expandedStory === story._id
-                    ? story.content
-                    : story.content.substring(0, 150)}
-                  {expandedStory !== story._id &&
-                    story.content.length > 150 &&
-                    "..."}
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  {story.content.substring(0, 150)}
+                  {story.content.length > 150 && "..."}
                 </p>
                 <div className="flex justify-between items-center">
                   <div>
@@ -284,22 +306,80 @@ const StoriesPage = () => {
                     </p>
                   </div>
                   <button
-                    onClick={() =>
-                      setExpandedStory(
-                        expandedStory === story._id ? null : story._id,
-                      )
-                    }
+                    onClick={() => openStoryModal(story)}
                     className="text-primary font-semibold hover:text-blue-800 transition duration-300"
                   >
-                    {expandedStory === story._id
-                      ? "Show Less ←"
-                      : "Read More →"}
+                    Read More →
                   </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {selectedStory && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+            onClick={closeStoryModal}
+          >
+            <div
+              className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl bg-white shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={closeStoryModal}
+                className="sticky top-4 float-right mr-4 mt-4 rounded-full bg-white/90 px-3 py-1 text-sm font-semibold text-gray-700 shadow hover:bg-gray-100"
+              >
+                Close ✕
+              </button>
+
+              {selectedStory.imageUrl && (
+                <img
+                  src={selectedStory.imageUrl}
+                  alt={selectedStory.title}
+                  className="w-full object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = "/images/placeholder.jpg";
+                  }}
+                />
+              )}
+
+              {selectedStory.videoUrl && (
+                <div className="w-full bg-black">
+                  <iframe
+                    width="100%"
+                    height="420"
+                    src={`https://www.youtube.com/embed/${extractYouTubeId(selectedStory.videoUrl)}`}
+                    title={selectedStory.title}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{ display: "block" }}
+                  ></iframe>
+                </div>
+              )}
+
+              <div className="p-6 md:p-8">
+                <h2 className="mb-2 text-3xl font-bold text-gray-900">
+                  {selectedStory.title}
+                </h2>
+                <p className="mb-6 text-sm text-gray-500">
+                  {new Date(selectedStory.createdAt).toLocaleDateString()}
+                </p>
+
+                <div className="space-y-4 text-base leading-8 text-gray-700">
+                  {selectedStory.content
+                    .split("\n")
+                    .filter((paragraph) => paragraph.trim())
+                    .map((paragraph, index) => (
+                      <p key={index}>{paragraph.trim()}</p>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {stories.length === 0 && !loading && (
           <div className="text-center py-12">

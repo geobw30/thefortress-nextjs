@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import {
   Heart,
   Users,
   Gift,
   Activity,
   BriefcaseMedical,
-  HelpingHand,
   Smile,
   Home,
   Wrench,
@@ -16,6 +16,19 @@ import useIntersectionObserver from "../../hooks/useIntersectionObserver";
 
 const ImpactSection = () => {
   const stats = [
+    {
+      icon: (
+        <Image
+          src="/images/sanitary-napkin.png"
+          alt="Sanitary napkin kit"
+          width={150}
+          height={150}
+          className="object-contain"
+        />
+      ),
+      number: 850,
+      label: "Dignity kits given to girls with menstrual hygiene trainings",
+    },
     {
       icon: <Wrench size={150} strokeWidth={0.75} />,
       number: 4700,
@@ -31,11 +44,6 @@ const ImpactSection = () => {
       icon: <Gift size={150} strokeWidth={0.75} />,
       number: 2879,
       label: "Mama Kits distributed for safe Child birth",
-    },
-    {
-      icon: <HelpingHand size={150} strokeWidth={0.75} />,
-      number: 850,
-      label: "Re-sanitary kits given to girls with menstrual hygiene trainings",
     },
     {
       icon: <Activity size={150} strokeWidth={0.75} />,

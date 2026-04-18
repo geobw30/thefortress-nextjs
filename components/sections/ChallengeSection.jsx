@@ -8,7 +8,7 @@ const ChallengeSection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setHighlightedIndex(
-        (prevIndex) => (prevIndex + 1) % challengeStats.length
+        (prevIndex) => (prevIndex + 1) % challengeStats.length,
       );
     }, 2000);
 
@@ -18,8 +18,8 @@ const ChallengeSection = () => {
   const challengeStats = [
     { number: "", label: "", shape: "small" },
     {
-      number: "25%",
-      label: "girls are victims of teenage pregnancy",
+      number: "30%",
+      label: "school girls drop out due to menstrual crisis",
       shape: "large",
     },
     { number: "", label: "", shape: "medium" },
@@ -30,8 +30,8 @@ const ChallengeSection = () => {
     },
     { number: "", label: "", shape: "small" },
     {
-      number: "11%",
-      label: "girls die due to unsafe abortion",
+      number: "25%",
+      label: "girls are victims of teenage pregnancy",
       shape: "large",
     },
     { number: "", label: "", shape: "medium" },
@@ -67,8 +67,8 @@ const ChallengeSection = () => {
                   stat.shape === "small"
                     ? "hexagon-sm"
                     : stat.shape === "medium"
-                    ? "hexagon-md"
-                    : "hexagon"
+                      ? "hexagon-md"
+                      : "hexagon"
                 } ${
                   index === highlightedIndex && stat.label !== ""
                     ? "hexagon-highlighted"
@@ -95,8 +95,8 @@ const ChallengeSection = () => {
                   stat.shape === "small"
                     ? "hexagon-sm"
                     : stat.shape === "medium"
-                    ? "hexagon-md"
-                    : "hexagon"
+                      ? "hexagon-md"
+                      : "hexagon"
                 } ${
                   index + 6 === highlightedIndex && stat.label !== ""
                     ? "hexagon-highlighted"
@@ -123,8 +123,8 @@ const ChallengeSection = () => {
                   stat.shape === "small"
                     ? "hexagon-sm"
                     : stat.shape === "medium"
-                    ? "hexagon-md"
-                    : "hexagon"
+                      ? "hexagon-md"
+                      : "hexagon"
                 } ${
                   index + 12 === highlightedIndex && stat.label !== ""
                     ? "hexagon-highlighted"
