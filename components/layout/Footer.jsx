@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="mt-4">
               <div className="relative w-full aspect-video rounded-lg overflow-hidden">
                 <iframe
-                  src="https://www.youtube.com/embed/A2MUlGarXtI"
+                  src="https://www.youtube.com/embed/fM18oUfL_UI"
                   title="The Fortress Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
