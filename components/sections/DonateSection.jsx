@@ -209,11 +209,11 @@ const DonateSection = () => {
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="font-medium">Account Name:</span>
-                      <span>THE FORTRESS</span>
+                      <span>THE FORTRESS LIMITED</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">Account Number:</span>
-                      <span>9030017088199</span>
+                      <span>9030017033157</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="font-medium">SWIFT Code:</span>
@@ -226,6 +226,21 @@ const DonateSection = () => {
                           src="/images/stanbic-bank-logo.png"
                           alt="Stanbic Bank (U) Limited"
                         />
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Name: </span>
+                      <span>Stanbic Bank Uganda Limited</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Branch: </span>
+                      <span>Nakasero Branch</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-medium">Address: </span>
+                      <span>
+                        &nbsp;Plot 17 Hannington Road, Crested towers Short
+                        tower. P.O.Box 7131, Kampala
                       </span>
                     </div>
                   </div>
